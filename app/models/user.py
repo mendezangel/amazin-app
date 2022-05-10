@@ -14,6 +14,9 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
+    reviews = db.relationship('Review', back_populates='user', cascade='all, delete')
+    orders = db.relationship('Order', back_populates='user', cascade='all, delete')
+
     @property
     def password(self):
         return self.hashed_password
@@ -29,5 +32,7 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'name': self.name,
-            'email': self.email
+            'email': self.email,
+            'reviews': [review.to_dict() for review in reviews]
+            'orders': [order.to_dict() for order in orders]
         }

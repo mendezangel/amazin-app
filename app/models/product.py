@@ -12,6 +12,9 @@ class Product(db.Model):
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
   updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
+  reviews = db.relationship('Review', back_populates='product', cascade='all, delete')
+  not_sure = db.relationship('Order_Item', back_populates='product', cascade='all, delete')
+
   def to_dict(self):
     return {
       'id': self.id,

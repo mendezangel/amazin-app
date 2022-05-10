@@ -10,6 +10,9 @@ class Order_Item(db.Model):
   quantity = db.Column(db.Integer, nullable=False)
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
+  product = db.relationship('Product', back_populates='not_sure')
+  order = db.relationship('Order', back_populates='products')
+
   def to_dict(self):
     return {
       'id': self.id,
