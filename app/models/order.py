@@ -10,7 +10,7 @@ class Order(db.Model):
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
   user = db.relationship('User', back_populates='orders')
-  products = db.relationship('Order_Item', back_populates='order', cascade='all, delete')
+  products_ordered = db.relationship('Order_Item', back_populates='order', cascade='all, delete')
 
   def to_dict(self):
     return {

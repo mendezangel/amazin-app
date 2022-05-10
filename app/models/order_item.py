@@ -11,7 +11,7 @@ class Order_Item(db.Model):
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
   product = db.relationship('Product', back_populates='not_sure')
-  order = db.relationship('Order', back_populates='products')
+  order = db.relationship('Order', back_populates='products_ordered')
 
   def to_dict(self):
     return {
