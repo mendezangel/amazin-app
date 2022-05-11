@@ -27,8 +27,8 @@
 }
 
 .login-form input {
-  width: fill;
-  margin: 5px 0 14px 0;
+  width: 100%;
+  margin: 5px 0 8px 0;
   font-family: inherit;
   height: 27px;
   padding: 3px 7px;
@@ -58,6 +58,7 @@
 
 .login-form button {
   font-family: inherit;
+  margin-top: 5px;
   cursor: pointer;
   width: 100%;
   height: 30px;
@@ -72,7 +73,7 @@
   background: linear-gradient(to bottom, #f5d78e, #eeb933);
 }
 
-.login-form-container p {
+[class='7788'] {
   font-size: 12px;
   line-height: 1.5;
   margin-top: 18px;
@@ -122,4 +123,11 @@
 [class='27502'] button:hover {
   border-color: #a2a6ac #979aa1 #82858a;
   background: #e7e9ec;
+}
+
+.form-error {
+  color: red;
+  opacity: .7;
+  font-size: small;
+  margin: 0;
 }

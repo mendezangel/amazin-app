@@ -11,6 +11,8 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  console.log(errors)
+
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -42,24 +44,28 @@ const LoginForm = () => {
               <input
                 name='email'
                 type='text'
-                placeholder='Email'
                 value={email}
                 onChange={updateEmail}
               />
+              {errors?.email?.map(error => {
+                return (<p className="form-error" key={error}>{error}</p>)
+              })}
             </div>
             <div>
               <label htmlFor='password'>Password</label>
               <input
                 name='password'
                 type='password'
-                placeholder='Password'
                 value={password}
                 onChange={updatePassword}
               />
+              {errors?.password?.map(error => {
+                return (<p className="form-error" key={error}>{error}</p>)
+              })}
               <button type='submit'>Sign-In</button>
             </div>
           </form>
-          <p>By continuing, you agree to Amazin's Conditions of Use and Privacy Notice.</p>
+          <p className='7788'>By continuing, you agree to Amazin's Conditions of Use and Privacy Notice.</p>
         </div>
         <div className='27502'>
           <h5>New to Amazin?</h5>
