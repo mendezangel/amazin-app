@@ -59,10 +59,10 @@ const LoginForm = () => {
               <button type='submit'>Sign-In</button>
             </div>
           </form>
-          <p>By continuing, you agree to Amazin's Conditions of Use and Privacy Notice</p>
+          <p>By continuing, you agree to Amazin's Conditions of Use and Privacy Notice.</p>
         </div>
         <div className='27502'>
-          <p>New to Amazin?</p>
+          <h5>New to Amazin?</h5>
           <button>Create your Amazin account</button>
         </div>
       </div>
