@@ -27,7 +27,7 @@
 }
 
 .login-form input {
-  width: 100%;
+  width: stretch;
   margin: 5px 0 8px 0;
   font-family: inherit;
   height: 27px;

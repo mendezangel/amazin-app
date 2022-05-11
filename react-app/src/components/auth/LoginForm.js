@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 import './LoginForm.css'
 
@@ -10,8 +10,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
-
-  console.log(errors)
+  const history = useHistory();
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -20,6 +19,11 @@ const LoginForm = () => {
       setErrors(data);
     }
   };
+
+  const signupButton = (e) => {
+    e.preventDefault();
+    history.push('/signup')
+  }
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -69,7 +73,7 @@ const LoginForm = () => {
         </div>
         <div className='27502'>
           <h5>New to Amazin?</h5>
-          <button>Create your Amazin account</button>
+          <button onClick={signupButton}>Create your Amazin account</button>
         </div>
       </div>
     </div>
