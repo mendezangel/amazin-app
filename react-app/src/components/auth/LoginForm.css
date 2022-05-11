@@ -1,0 +1,36 @@
+[class='20481'] {
+  border-bottom: solid rgba(108, 122, 137, 0.5) 1px;
+  padding-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 420px;
+}
+
+[class='4014'] {
+  border: solid black 1px;
+  width: 350px;
+  height: fit-content;
+  padding: 26px;
+}
+
+.login-form-container {
+  border: 1px #ddd solid;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 26px;
+}
+
+.login-form-container h1 {
+  margin: 0 0 15px 0;
+  font-weight: 500;
+}
+
+/* .login-form {
+  border: solid black 1px;
+} */
+
+.login-form input {
+  width: fill;
+  margin: 5px 0 14px 0;
+}

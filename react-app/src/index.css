@@ -1,1 +1,19 @@
-/* TODO Add site wide styles */
+@font-face {
+  font-family: "Amazon Ember", Arial, sans-serif;
+  src: url("./fonts/amazon-font/Ember/Amazon-Ember-Medium.ttf") format('ttf');
+}
+
+html {
+  font-family: "Amazon Ember", Arial, sans-serif;
+  color: #111;
+  line-height: 19px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  box-sizing: border-box;
+}
