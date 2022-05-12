@@ -21,6 +21,11 @@ const LoginForm = () => {
     history.push('/')
   };
 
+  const demoUser = async (e) => {
+    e.preventDefault();
+    dispatch(login('atuny0@sohu.com', 'password'))
+    history.push('/')
+  }
 
   const signupButton = (e) => {
     e.preventDefault();
@@ -69,6 +74,7 @@ const LoginForm = () => {
                 return (<p className="form-error" key={error}>{error}</p>)
               })}
               <button type='submit'>Sign-In</button>
+              <button onClick={demoUser}>Demo User</button>
             </div>
           </form>
           <p className='7788'>By continuing, you agree to Amazin's Conditions of Use and Privacy Notice.</p>

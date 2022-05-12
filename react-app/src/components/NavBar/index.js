@@ -6,6 +6,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
+  console.log(user)
 
   const helloUser = () => {
     if (!user) {
@@ -14,7 +15,7 @@ const NavBar = () => {
       )
     }
     return (
-      <h3 className='nav-bar-user-p'>Hello, Sign in</h3>
+      <h3 className='nav-bar-user-p'>Hello, {user.name}</h3>
     )
   }
 

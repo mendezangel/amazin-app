@@ -43,6 +43,6 @@ class User(db.Model, UserMixin):
             'state': self.state,
             'zip_code': self.zip_code,
             'country': self.country,
-            'reviews': [review.to_dict() for review in reviews],
-            'orders': [order.to_dict() for order in orders]
+            # 'reviews': [review.to_dict() for review in reviews],
+            # 'orders': [order.to_dict() for order in orders]
         }
