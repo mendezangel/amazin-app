@@ -7,9 +7,9 @@ export default function UserDropdownMenu({ user }) {
   const dispatch = useDispatch()
   const history = useHistory()
 
-  const handleLogout = (e) => {
+  const handleLogout = async (e) => {
     e.preventDefault();
-    dispatch(logout());
+    await dispatch(logout());
     history.push('/login');
   }
 
