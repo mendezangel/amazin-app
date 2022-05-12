@@ -16,9 +16,11 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors(data);
+      return setErrors(data);
     }
+    history.push('/')
   };
+
 
   const signupButton = (e) => {
     e.preventDefault();
