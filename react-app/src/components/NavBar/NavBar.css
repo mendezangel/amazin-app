@@ -1,5 +1,39 @@
-.nav-bar-container {
+.nav-bar-header {
   background-color: #131921;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-bar-container {
+  margin: 0 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h3,
+i {
+  color: #fff;
+  margin: 0;
+}
+
+.nav-bar-left-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  float: none;
+  width: 250px;
+}
+
+.nav-bar-right-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  float: none;
+  width: 250px;
 }
 
 .nav-bar-logo-container img {
