@@ -40,3 +40,43 @@ i {
   width: 93px;
   height: 40px;
 }
+
+
+.menu {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  background: #EAEDED;
+}
+
+.menu-item {
+  padding: 5px;
+  height: 28px;
+  border-bottom: 1px solid rgb(187, 187, 187);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-item button {
+  margin: 0;
+  font-family: inherit;
+  border: none;
+  background: none;
+  font-size: 15px;
+  opacity: 0.75;
+}
+
+.menu-item button:hover {
+  cursor: pointer;
+  color: #e77600;
+}
+
+.nav-bar-user-p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.nav-bar-orders h3 {
+  font-size: 14px;
+}

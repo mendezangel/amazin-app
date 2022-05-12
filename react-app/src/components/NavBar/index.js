@@ -1,12 +1,14 @@
 import React from 'react';
 import './NavBar.css'
 import image from '../../images/Amazin.png'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import Popup from 'reactjs-popup';
+import { logout } from '../../store/session';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
-  console.log(user)
+  const dispatch = useDispatch()
 
   const helloUser = () => {
     if (!user) {
@@ -17,6 +19,21 @@ const NavBar = () => {
     return (
       <h3 className='nav-bar-user-p'>Hello, {user.name}</h3>
     )
+  }
+
+  const loginModal = () => {
+    if (!user) {
+      return (
+        <div className='modal-login-menu'>
+          <button>Sign In</button>
+        </div>
+      )
+    }
+  }
+
+  const handleLogout = (e) => {
+    e.preventDefault()
+    dispatch(logout())
   }
 
   return (
@@ -32,7 +49,24 @@ const NavBar = () => {
         </div>
         <div className='nav-bar-right-container'>
           <div className='nav-bar-user'>
-            {helloUser()}
+            <Popup
+              trigger={helloUser}
+              position='bottom right'
+              offsetY={7}
+              on='click'
+              closeOnDocumentClick
+              mouseLeaveDelay={300}
+              mouseEnterDelay={0}
+              contentStyle={{ padding: '0px', border: 'none' }}
+            // arrow={false}
+            >
+              <div className='menu'>
+                {loginModal}
+                <div className='menu-item'>
+                  <button onClick={handleLogout}>Logout</button>
+                </div>
+              </div>
+            </Popup>
           </div>
           <div className='nav-bar-orders'>
             <h3>Orders</h3>
