@@ -43,7 +43,9 @@ i {
 
 
 .menu {
-  width: 150px;
+  width: 170px;
+  border: 1px #ddd solid;
+  border-radius: 3px;
   display: flex;
   flex-direction: column;
   background: #EAEDED;
@@ -52,7 +54,7 @@ i {
 .menu-item {
   padding: 5px;
   height: 28px;
-  border-bottom: 1px solid rgb(187, 187, 187);
+  /* border-bottom: 1px solid rgb(187, 187, 187); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,9 +74,50 @@ i {
   color: #e77600;
 }
 
+.menu-signin-container {
+  margin: 8px;
+}
+
+.menu-signin-container button {
+  font-family: inherit;
+  margin-top: 5px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  width: 100%;
+  height: 30px;
+  color: #111;
+  background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+  border-color: #a88734 #9c7e31 #846a29;
+  border-radius: 3px;
+  border-width: 1px;
+}
+
+.menu-signin-container button:hover {
+  background: linear-gradient(to bottom, #f5d78e, #eeb933);
+}
+
+.menu-signin-container a {
+  color: #05a;
+  text-decoration: none;
+}
+
+.menu-signin-container a:hover {
+  text-decoration: underline;
+  color: #e77600;
+}
+
+.menu-signin-container p {
+  margin: 0;
+  font-size: 12px;
+}
+
 .nav-bar-user-p {
   margin: 0;
   font-size: 14px;
+}
+
+.nav-bar-user-p:hover {
+  cursor: pointer;
 }
 
 .nav-bar-orders h3 {

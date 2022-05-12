@@ -58,7 +58,6 @@ export const login = (email, password) => async (dispatch) => {
 }
 
 export const logout = () => async (dispatch) => {
-  console.log('you hit the thunk')
   const response = await fetch('/api/auth/logout', {
     headers: {
       'Content-Type': 'application/json',
