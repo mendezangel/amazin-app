@@ -2,6 +2,7 @@ import React from 'react';
 import './NavBar.css'
 import image from '../../images/Amazin.png'
 import { useSelector } from 'react-redux';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
@@ -36,7 +37,7 @@ const NavBar = () => {
             <h3>Orders</h3>
           </div>
           <div className='nav-bar-cart'>
-            <i className="fa-solid fa-cart-shopping fa-xl"></i>
+            <ShoppingCartOutlinedIcon fontSize='large' style={{ color: '#fff' }} />
           </div>
         </div>
       </div>
