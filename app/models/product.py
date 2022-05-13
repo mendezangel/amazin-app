@@ -15,7 +15,6 @@ class Product(db.Model):
 
   reviews = db.relationship('Review', back_populates='product', cascade='all, delete')
   not_sure = db.relationship('Order_Item', back_populates='product', cascade='all, delete')
-  images = []
 
   def to_dict(self):
     return {
@@ -24,5 +23,5 @@ class Product(db.Model):
       'description': self.description,
       'category': self.category,
       'price': self.price,
-      'stock': self.stock
+      'stock': self.stock,
     }
