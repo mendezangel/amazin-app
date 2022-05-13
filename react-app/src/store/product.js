@@ -1,14 +1,16 @@
-const LOAD = 'products/load'
+const LOAD = 'products/load';
 
 const products = payload => {
   return { type: LOAD, payload }
-}
+};
 
-export const getAllProducts = async () => {
+export const getAllProducts = () => async (dispatch) => {
   const res = await fetch('api/products');
   if (res.ok) {
-    const { products: productsArray } = await res.json()
+    const { products: productsArray } = await res.json();
+    // console.log(products(productsArray))
     dispatch(products(productsArray))
+    return productsArray;
   }
 }
 
@@ -21,6 +23,7 @@ const ProductReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD:
       newState = { ...state };
+      console.log(action)
       action.payload.forEach(product => {
         newState[product.id] = product
       })
