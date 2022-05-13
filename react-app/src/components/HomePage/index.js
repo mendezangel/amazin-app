@@ -22,7 +22,11 @@ export default function HomePage() {
   return (
     <div>
       <h1>Home Page</h1>
-      <ProductCard products={products} />
+      {products.map(product => {
+        return (
+          <ProductCard product={product} />
+        )
+      })}
     </div>
   )
 }
