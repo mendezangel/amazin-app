@@ -1,5 +1,6 @@
 from app.models import db, User, Product
 import requests
+import random
 from faker import Faker
 
 
@@ -20,22 +21,22 @@ def seed_products():
     db.session.add(product)
     db.session.commit()
 
-  response1 = requests.get('https://fakestoreapi.com/products')
-  products = response1.json()
-  fake = Faker()
+  # response1 = requests.get('https://fakestoreapi.com/products')
+  # products = response1.json()
+  # fake = Faker()
 
-  for item in products:
-    product = Product(
-      name=item['title'],
-      description=item['description'],
-      category=item['category'],
-      price=item['price'],
-      stock=(fake.random_digit_not_null() * fake.random_digit_not_null()) * 2,
-      image_url=item['image']
-    )
+  # for item in products:
+  #   product = Product(
+  #     name=item['title'],
+  #     description=item['description'],
+  #     category=item['category'],
+  #     price=item['price'],
+  #     stock=(fake.random_digit_not_null() * fake.random_digit_not_null()) * 2,
+  #     image_url=item['image']
+  #   )
     
-    db.session.add(product)
-    db.session.commit()
+  #   db.session.add(product)
+  #   db.session.commit()
 
 
 def undo_products():

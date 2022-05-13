@@ -1,0 +1,69 @@
+.product-card-container {
+  width: 307px;
+  background-color: #fff;
+  padding: 20px;
+  margin: 14px;
+  /* height: 385px; */
+}
+
+.product-card-price-container {
+  display: flex;
+  align-items: flex-start;
+  color: #0f1111;
+  margin-right: 10px;
+  margin: 5px 0;
+  font-size: 12px;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.product-card-price-container p {
+  margin: 6px 0;
+  font-weight: 600;
+}
+
+.dollar-sign {
+  color: #0f1111;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  /* padding-top: 2px; */
+}
+
+.price-dollar {
+  color: #0f1111;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  font-size: 22px;
+}
+
+.price-cents-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.price-cents-container .price-cents {
+  color: #0f1111;
+  display: relative;
+  top: 0;
+  margin: 0;
+  font: inherit;
+  font-size: 15px;
+  vertical-align: baseline;
+}
+
+.product-img-container img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.product-card-name-container {
+  margin-top: 6px;
+  font-size: 14px;
+}
