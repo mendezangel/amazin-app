@@ -10,6 +10,7 @@ class Product(db.Model):
   category = db.Column(db.String(50), nullable=False)
   price = db.Column(db.Float, nullable=False)
   stock = db.Column(db.Integer, nullable=False)
+  image_url = db.Column(db.String(200))
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
   updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
@@ -24,4 +25,5 @@ class Product(db.Model):
       'category': self.category,
       'price': self.price,
       'stock': self.stock,
+      'image_url': self.image_url
     }

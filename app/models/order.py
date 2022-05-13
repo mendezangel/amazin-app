@@ -6,6 +6,7 @@ class Order(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+  delivery_instructions = db.Column(db.String(1000), nullable=False)
   total_cost = db.Column(db.Float, nullable=False)
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
@@ -17,5 +18,6 @@ class Order(db.Model):
       'id': self.id,
       'user_id': self.user_id,
       'total_cost': self.total_cost,
+      'delivery_instructions': self.delivery_instructions,
       'created_at': self.created_at
     }

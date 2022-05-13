@@ -13,11 +13,9 @@ def seed_products():
       description=item['description'],
       category=item['category'],
       price=item['price'],
-      stock=item['stock']
+      stock=item['stock'],
+      image_url=item['images'][0]
     )
-
-    for image in item['images']:
-      product.images.append(image)
 
     db.session.add(product)
     db.session.commit()
@@ -32,10 +30,9 @@ def seed_products():
       description=item['description'],
       category=item['category'],
       price=item['price'],
-      stock=(fake.random_digit_not_null() * fake.random_digit_not_null()) * 2
+      stock=(fake.random_digit_not_null() * fake.random_digit_not_null()) * 2,
+      image_url=item['image']
     )
-    
-    product.images.append(item['image'])
     
     db.session.add(product)
     db.session.commit()
