@@ -1,0 +1,25 @@
+.product-page-11940 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: solid #cccccc 1px;
+  padding: 18px;
+}
+
+.product-details-wrapper {
+  min-width: 1000px;
+  margin: 0 18px;
+  display: flex;
+  align-items: center;
+}
+
+.product-details-img-container {
+  width: 650px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-details-img-container img {
+  max-width: 65%;
+  max-height: 70vh;
+}

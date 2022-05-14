@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllProducts } from '../../store/product';
+import { useSelector } from 'react-redux';
 import ProductCard from '../ProductCard';
 
 export default function HomePage() {
-  const dispatch = useDispatch();
-  const user = useSelector(state => state.session.user);
+  // const dispatch = useDispatch();
+  // const user = useSelector(state => state.session.user);
   const products = useSelector(state => state.product.products)
 
   const [loaded, setLoaded] = useState(false);
@@ -22,7 +21,7 @@ export default function HomePage() {
   useEffect(() => {
     function shuffle(array) {
       let currentIndex = array.length, randomIndex;
-      while (currentIndex != 0) {
+      while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
         [array[currentIndex], array[randomIndex]] = [

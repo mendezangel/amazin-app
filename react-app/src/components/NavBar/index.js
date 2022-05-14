@@ -1,7 +1,8 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './NavBar.css'
 import image from '../../images/Amazin.png'
-import { useDispatch, useSelector } from 'react-redux';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Popup from 'reactjs-popup';
 import UserDropdownMenu from '../UserDropdownMenu'
@@ -25,7 +26,9 @@ const NavBar = () => {
       <div className='nav-bar-container'>
         <div className='nav-bar-left-container'>
           <div className='nav-bar-logo-container'>
-            <img src={image} />
+            <Link to='/'>
+              <img src={image} />
+            </Link>
           </div>
           <div className='nav-bar-address-container'>
             <h3>placeholder text</h3>
