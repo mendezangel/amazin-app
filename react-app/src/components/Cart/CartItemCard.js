@@ -11,7 +11,7 @@ export default function CartItemCard({ product, deleteItem }) {
   return (
     <div className='product-card-container'>
       <div className='image-container4495'>
-        <img src={product.image - url} />
+        <img src={product.image_url} />
       </div>
       <div className='details-container29256'>
         <h2>{product.name}</h2>
@@ -22,7 +22,7 @@ export default function CartItemCard({ product, deleteItem }) {
         <div className='delete-item8723' onClick={deleteItem}>Delete</div>
       </div>
       <div className='price-container3320'>
-        <h2>${product.price}.99</h2>
+        <h2>${(product.price + 1) * product.quantity}.99</h2>
       </div>
     </div>
   )

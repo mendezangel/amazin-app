@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import CartItemCard from './CartItemCard';
 
 export default function Cart() {
 
@@ -6,19 +7,28 @@ export default function Cart() {
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
+    const items = Object.values(localStorage)
     const arr = [];
-    for (const key in localStorage) {
-      const item = localStorage[key];
+    items.forEach(item => {
       arr.push(JSON.parse(item))
-    }
+    });
     setCartItems(arr)
-  })
+    setIsLoaded(true)
+  }, [])
 
   if (!isLoaded) return null;
 
   return (
-    <div>
-
+    <div className='cart-container9271'>
+      <div className='cart-items-container'>
+        <h1>Shopping Cart</h1>
+        {cartItems.map(product => {
+          return (
+            <CartItemCard product={product} />
+          )
+        })}
+      </div>
+      <div className='cart-total-container'></div>
     </div>
   )
 }
