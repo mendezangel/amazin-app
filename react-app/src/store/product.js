@@ -5,7 +5,7 @@ const products = payload => {
 };
 
 export const getAllProducts = () => async (dispatch) => {
-  const res = await fetch('/api/products');
+  const res = await fetch('/api/products/');
   if (res.ok) {
     const { products: productsArray } = await res.json();
     dispatch(products(productsArray))

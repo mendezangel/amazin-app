@@ -23,6 +23,8 @@ export default function ProductPage() {
     setQuantity(e.target.value);
   }
 
+  if (!product) return null;
+
   return (
     <div className='product-page-11940'>
 

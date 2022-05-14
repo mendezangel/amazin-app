@@ -16,10 +16,15 @@
 .product-details-img-container {
   width: 650px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-details-img-container img {
   max-width: 65%;
   max-height: 70vh;
+}
+
+.product-details-container {
+  border: solid black 1px;
 }
