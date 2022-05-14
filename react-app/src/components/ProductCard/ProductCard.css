@@ -55,6 +55,7 @@
   margin: 0;
   font: inherit;
   font-size: 15px;
+  line-height: 0.9em;
   vertical-align: baseline;
 }
 
@@ -66,4 +67,9 @@
 .product-card-name-container {
   margin-top: 6px;
   font-size: 14px;
+}
+
+.product-card-name-container a {
+  text-decoration: none;
+  color: inherit;
 }
