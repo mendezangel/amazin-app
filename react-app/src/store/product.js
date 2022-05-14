@@ -13,6 +13,13 @@ export const getAllProducts = () => async (dispatch) => {
   }
 }
 
+export const getOneProduct = (id) => async (dispatch) => {
+  const res = await fetch(`/api/products/${id}`)
+  if (res.ok) {
+    const { product } = await res.json();
+    dispatch(products(product))
+  }
+}
 const initialState = { products: [], reviews: {} }
 
 const ProductReducer = (state = initialState, action) => {
@@ -21,6 +28,8 @@ const ProductReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD:
       newState = { ...state };
+      newState.products = [...newState.products]
+      newState.reviews = { ...newState.reviews }
       newState.products = [...action.payload]
       action.payload.forEach(product => {
         newState[product.id] = product

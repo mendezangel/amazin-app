@@ -8,20 +8,38 @@ export default function HomePage() {
   const user = useSelector(state => state.session.user);
   const products = useSelector(state => state.product.products)
 
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(false);
+
+  const [randProducts, setRandProducts] = useState([])
+
 
   useEffect(() => {
     (async () => {
       await dispatch(getAllProducts())
-      setLoaded(true)
     })();
   }, [dispatch])
+
+  useEffect(() => {
+    function shuffle(array) {
+      let currentIndex = array.length, randomIndex;
+      while (currentIndex != 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex], array[currentIndex]];
+      }
+
+      return setRandProducts(array);
+    }
+    shuffle(products)
+    setLoaded(true)
+  })
 
   if (!loaded) return null;
 
   return (
     <div>
-      {products.map(product => {
+      {randProducts.map(product => {
         return (
           <ProductCard product={product} key={product.id} />
         )

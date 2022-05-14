@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import HomePage from './components/HomePage';
+import ProductPage from './components/ProductPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -35,17 +36,13 @@ function App() {
         <Route path='/signup' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <NavBar />
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <NavBar />
-          <User />
-        </ProtectedRoute>
         <Route path='/' exact={true} >
           <NavBar />
           <HomePage />
+        </Route>
+        <Route path='/products/:id' exact={true}>
+          <NavBar />
+          <ProductPage />
         </Route>
       </Switch>
     </BrowserRouter>
