@@ -92,8 +92,8 @@ export default function ProductPage() {
           <p className='free-delivery-p'><span className='FREE-delivery'>FREE delivery</span> {freeDelivery}</p>
           <p className='fastest-delivery-p'>Or fastest delivery <span className='fastest-delivery'>{fastDelivery}. </span>Order within <span className='order-within-text'>{orderWithin}</span></p>
           {/* <p className='order-within-p'></p> */}
-          {inStock && (<h3>In Stock.</h3>)}
-          {!inStock && (<h3>Out of Stock.</h3>)}
+          {inStock && (<h3 className='in-stock-h3'>In Stock.</h3>)}
+          {!inStock && (<h3 className='out-of-stock-h3'>Out of Stock.</h3>)}
           <select className='qty-select' onChange={updateQuantity} disabled={selectDisabled}>
             <option value='1'>Qty: 1</option>
             <option value='2'>2</option>
@@ -105,20 +105,20 @@ export default function ProductPage() {
             <option value='8'>8</option>
             <option value='9'>9</option>
           </select>
-          <div className='button-container15631'>
-            <button onClick={addToCart}>add to cart</button>
+          <div onClick={addToCart} className='button-container15631'>
+            Add to Cart
           </div>
           <p className='secure-transaction-p'>
             <span><i class="fa-solid fa-lock"></i></span>
             Secure transaction
           </p>
           <div className='ships-from-container'>
-            <div className='ships-from-text-container'><p>Ships from</p></div>
-            <div className='website-text-container'><p>amazin.com</p></div>
+            <div className='ships-from-text-container'>Ships from</div>
+            <div className='website-text-container'>amazin.com</div>
           </div>
           <div className='sold-by-container'>
-            <p>Sold by</p>
-            <p>amazin.com</p>
+            <div className='sold-by-text'>Sold by</div>
+            <div className='website-text-container'>amazin.com</div>
           </div>
           <p className='return-policy-text'>
             Return policy: <span>{returnable}</span>
