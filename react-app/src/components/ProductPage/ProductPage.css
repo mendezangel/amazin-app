@@ -93,6 +93,7 @@
   width: 200px;
   min-width: 200px;
   height: fit-content;
+  align-self: flex-start;
 }
 
 .product-details-buy-container .price21549 {
