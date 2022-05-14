@@ -4,10 +4,10 @@ import { Link, useHistory, useParams } from 'react-router-dom'
 import './ProductPage.css'
 
 export default function ProductPage() {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const history = useHistory()
   const { id } = useParams()
-  const user = useSelector(state => state.session.user)
+  // const user = useSelector(state => state.session.user)
   const product = useSelector(state => state.product[id])
 
   const [quantity, setQuantity] = useState('1')
@@ -20,10 +20,13 @@ export default function ProductPage() {
   const [loaded, setLoaded] = useState(false)
 
   const addToCart = () => {
-    let cartItem = product;
-    cartItem.quantity = parseInt(quantity)
-    localStorage.setItem(id, JSON.stringify(cartItem))
-    history.push('/cart')
+    if (inStock) {
+      let cartItem = product;
+      cartItem.quantity = parseInt(quantity)
+      localStorage.setItem(id, JSON.stringify(cartItem))
+      return history.push('/cart')
+    }
+    alert('Item is out of Stock!')
   }
 
   const updateQuantity = (e) => {
