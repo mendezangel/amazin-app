@@ -29,6 +29,7 @@
   width: 25%;
   min-width: 300px;
   align-self: flex-start;
+  margin-right: 30px;
 }
 
 .product-details-child1 {
@@ -83,4 +84,63 @@
 .product-details-child3 p {
   margin: 0 0 10px 0;
   font-size: 14px;
+}
+
+.product-details-buy-container {
+  border: solid #D5D9D9 1px;
+  border-radius: 5px;
+  padding: 14px 18px;
+  width: 200px;
+  min-width: 200px;
+  height: fit-content;
+}
+
+.product-details-buy-container .price21549 {
+  margin: 0;
+  font-size: 1.3em;
+  color: #B12704;
+}
+
+.product-details-buy-container .free-returns-p {
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  padding-top: 10px;
+}
+
+.product-details-buy-container .free-returns-p .free-returns {
+  color: #007185;
+}
+
+.product-details-buy-container .free-returns-p .free-returns:hover {
+  cursor: pointer;
+  color: #C7511F;
+}
+
+.product-details-buy-container .free-delivery-p {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.product-details-buy-container .FREE-delivery {
+  color: #007185;
+  font-weight: 500;
+}
+
+.product-details-buy-container .FREE-delivery:hover {
+  cursor: pointer;
+  color: #C7511F;
+}
+
+.product-details-buy-container .fastest-delivery-p {
+  font-size: 14px;
+  line-height: 1.3em;
+}
+
+.product-details-buy-container .fastest-delivery {
+  font-weight: 600;
+}
+
+.product-details-buy-container .order-within-text {
+  color: #007600;
 }

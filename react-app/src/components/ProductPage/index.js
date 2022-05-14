@@ -44,7 +44,7 @@ export default function ProductPage() {
     const fastDeliveryArr = date1.toDateString().split(' ')
     setFastDelivery(`${fastDeliveryArr[0]}, ${fastDeliveryArr[1]} ${fastDeliveryArr[2]}`)
 
-    setOrderWithin(`Order within ${23 - today.getHours()} hrs and ${59 - today.getMinutes()} mins`)
+    setOrderWithin(`${23 - today.getHours()} hrs and ${59 - today.getMinutes()} mins`)
 
     date2.setMonth(date2.getMonth() + 1);
     const returnableArr = date2.toDateString().split(' ')
@@ -89,9 +89,9 @@ export default function ProductPage() {
         <div className='product-details-buy-container'>
           <p className='price21549'>${product.price}.99</p>
           <p className='free-returns-p'>& <span className='free-returns'>FREE Returns</span></p>
-          <p className='free-delivery-p'><span className='FREE-delivery'>FREE delivery:</span> {freeDelivery}</p>
-          <p className='fastest-delivery-p'><span className='fastest-delivery'>Fastest delivery: </span>{fastDelivery}</p>
-          <p className='order-within-p'>{orderWithin}</p>
+          <p className='free-delivery-p'><span className='FREE-delivery'>FREE delivery</span> {freeDelivery}</p>
+          <p className='fastest-delivery-p'>Or fastest delivery <span className='fastest-delivery'>{fastDelivery}. </span>Order within <span className='order-within-text'>{orderWithin}</span></p>
+          {/* <p className='order-within-p'></p> */}
           {inStock && (<h3>In Stock.</h3>)}
           {!inStock && (<h3>Out of Stock.</h3>)}
           <select className='qty-select' onChange={updateQuantity} disabled={selectDisabled}>
