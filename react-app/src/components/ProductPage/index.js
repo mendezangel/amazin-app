@@ -15,6 +15,8 @@ export default function ProductPage() {
   const [fastDelivery, setFastDelivery] = useState('')
   const [orderWithin, setOrderWithin] = useState('')
   const [returnable, setReturnable] = useState('')
+  const [inStock, setInStock] = useState(true)
+  const [selectDisabled, setSelectDisabled] = useState(false)
   const [loaded, setLoaded] = useState(false)
 
   const addToCart = () => {
@@ -32,6 +34,7 @@ export default function ProductPage() {
     const date = new Date()
     const date1 = new Date()
     const today = new Date()
+    const date2 = new Date()
 
     date.setDate(date.getDate() + 5)
     const freeDeliveryArr = date.toDateString().split(' ')
@@ -43,9 +46,17 @@ export default function ProductPage() {
 
     setOrderWithin(`Order within ${23 - today.getHours()} hrs and ${59 - today.getMinutes()} mins`)
 
+    date2.setMonth(date2.getMonth() + 1);
+    const returnableArr = date2.toDateString().split(' ')
+    setReturnable(`Returnable until ${returnableArr[1]} ${returnableArr[2]}, ${returnableArr[3]}`);
+
+    if (product.stock === 0) {
+      setInStock(false)
+      setSelectDisabled(true)
+    }
+
     setLoaded(true)
   })
-
 
   if (!loaded) return null;
 
@@ -78,7 +89,12 @@ export default function ProductPage() {
         <div className='product-details-buy-container'>
           <p className='price21549'>${product.price}.99</p>
           <p className='free-returns-p'>& <span className='free-returns'>FREE Returns</span></p>
-          <select className='qty-select' onChange={updateQuantity}>
+          <p className='free-delivery-p'><span className='FREE-delivery'>FREE delivery:</span> {freeDelivery}</p>
+          <p className='fastest-delivery-p'><span className='fastest-delivery'>Fastest delivery: </span>{fastDelivery}</p>
+          <p className='order-within-p'>{orderWithin}</p>
+          {inStock && (<h3>In Stock.</h3>)}
+          {!inStock && (<h3>Out of Stock.</h3>)}
+          <select className='qty-select' onChange={updateQuantity} disabled={selectDisabled}>
             <option value='1'>Qty: 1</option>
             <option value='2'>2</option>
             <option value='3'>3</option>
@@ -89,7 +105,24 @@ export default function ProductPage() {
             <option value='8'>8</option>
             <option value='9'>9</option>
           </select>
-          <button onClick={addToCart}>add to cart</button>
+          <div className='button-container15631'>
+            <button onClick={addToCart}>add to cart</button>
+          </div>
+          <p className='secure-transaction-p'>
+            <span><i class="fa-solid fa-lock"></i></span>
+            Secure transaction
+          </p>
+          <div className='ships-from-container'>
+            <div className='ships-from-text-container'><p>Ships from</p></div>
+            <div className='website-text-container'><p>amazin.com</p></div>
+          </div>
+          <div className='sold-by-container'>
+            <p>Sold by</p>
+            <p>amazin.com</p>
+          </div>
+          <p className='return-policy-text'>
+            Return policy: <span>{returnable}</span>
+          </p>
         </div>
       </div>
     </div>
