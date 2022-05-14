@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { authenticate } from './store/session';
+import { getAllProducts } from './store/product';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar/'
-import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
-import { authenticate } from './store/session';
 import HomePage from './components/HomePage';
 import ProductPage from './components/ProductPage';
+import Cart from './components/Cart';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -18,6 +17,7 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate())
+      await dispatch(getAllProducts())
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -43,6 +43,10 @@ function App() {
         <Route path='/products/:id' exact={true}>
           <NavBar />
           <ProductPage />
+        </Route>
+        <Route path='/cart' exact={true}>
+          <NavBar />
+          <Cart />
         </Route>
       </Switch>
     </BrowserRouter>

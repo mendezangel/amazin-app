@@ -13,11 +13,11 @@ export default function HomePage() {
   const [randProducts, setRandProducts] = useState([])
 
 
-  useEffect(() => {
-    (async () => {
-      await dispatch(getAllProducts())
-    })();
-  }, [dispatch])
+  // useEffect(() => {
+  //   (async () => {
+  //     await dispatch(getAllProducts())
+  //   })();
+  // }, [dispatch])
 
   useEffect(() => {
     function shuffle(array) {

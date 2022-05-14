@@ -1,37 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import { getOneProduct } from '../../store/product'
 
 export default function ProductPage() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const { id } = useParams()
   const user = useSelector(state => state.session.user)
   const product = useSelector(state => state.product[id])
 
-  const [isLoaded, setIsLoaded] = useState(false)
   const [quantity, setQuantity] = useState('1')
-
-  useEffect(() => {
-    (async () => {
-      await dispatch(getOneProduct(id))
-      setIsLoaded(true)
-    })();
-  }, [dispatch])
 
   const addToCart = () => {
     let cartItem = product;
     cartItem.quantity = parseInt(quantity)
     localStorage.setItem(id, JSON.stringify(cartItem))
+    history.push('/cart')
   }
 
-  const updateValue = () => {
-    setQuantity(document.querySelector('qty-select').value);
+  const updateQuantity = (e) => {
+    setQuantity(e.target.value);
   }
-
-  console.log(localStorage)
-
-  if (!isLoaded) return null;
 
   return (
     <div className='product-details-wrapper'>
@@ -48,7 +38,7 @@ export default function ProductPage() {
       </div>
       <div className='product-details-buy-container'>
         <span>{product.price}.99</span>
-        <select className='qty-select' onChange={updateValue}>
+        <select className='qty-select' onChange={updateQuantity}>
           <option value='1'>Qty: 1</option>
           <option value='2'>2</option>
           <option value='3'>3</option>
