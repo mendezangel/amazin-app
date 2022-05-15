@@ -31,7 +31,13 @@ const NavBar = () => {
             </Link>
           </div>
           <div className='nav-bar-address-container'>
-            <h3>placeholder text</h3>
+            <div class="nav-marker-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="deliver-to-container">
+              <div class="deliver-to-user">Deliver to {user.name.split(' ')[0]}</div>
+              <div class="user-location" style={{ color: '#fff' }}>{user.city} {user.zip_code}</div>
+            </div>
           </div>
         </div>
         <div className='nav-bar-right-container'>
@@ -40,9 +46,9 @@ const NavBar = () => {
               trigger={helloUser}
               position='bottom right'
               offsetY={7}
-              on='click'
+              on='hover'
               closeOnDocumentClick
-              mouseLeaveDelay={300}
+              mouseLeaveDelay={200}
               mouseEnterDelay={0}
               contentStyle={{ padding: '0px', border: 'none' }}
             // arrow={false}

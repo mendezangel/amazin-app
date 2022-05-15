@@ -25,7 +25,7 @@ i {
   justify-content: space-between;
   align-items: center;
   float: none;
-  width: 250px;
+  width: 350px;
 }
 
 .nav-bar-right-container {
@@ -34,6 +34,10 @@ i {
   align-items: center;
   float: none;
   width: 250px;
+}
+
+.nav-bar-logo-container {
+  width: 180px;
 }
 
 .nav-bar-logo-container img {
@@ -127,4 +131,32 @@ i {
 
 .nav-bar-orders h3 {
   font-size: 14px;
+}
+
+.nav-bar-address-container {
+  display: flex;
+  width: 300px;
+}
+
+.nav-bar-address-container .nav-marker-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 1px;
+}
+
+.nav-bar-address-container .deliver-to-container {
+  /* border: solid white 1px; */
+  margin-left: 5px;
+}
+
+.deliver-to-container .deliver-to-user {
+  font-size: 12px;
+  color: #CCCCCC;
+}
+
+.deliver-to-container .user-location {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 0.8em;
 }
