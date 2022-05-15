@@ -24,3 +24,16 @@
   font-weight: 500;
   font-size: 30px;
 }
+
+.cart-subtotal2893 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cart-subtotal2893 h3 {
+  font-weight: 500;
+}
+
+.cart-subtotal2893 .subtotal-span7058 {
+  font-weight: 600;
+}

@@ -112,7 +112,7 @@ export default function ProductPage() {
             Add to Cart
           </div>
           <p className='secure-transaction-p'>
-            <span><i class="fa-solid fa-lock"></i></span>
+            <span><i className="fa-solid fa-lock"></i></span>
             Secure transaction
           </p>
           <div className='ships-from-container'>

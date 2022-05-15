@@ -4,10 +4,14 @@ import './CartItemCard.css'
 export default function CartItemCard({ product, deleteItem }) {
 
   const [inStock, setInStock] = useState(true);
+  const [productPrice, setProductPrice] = useState(0);
+
+  if (product.stock === 0) setInStock(false)
 
   useEffect(() => {
-    if (product.stock === 0) setInStock(false)
-  })
+    let num = (product.price + 0.99) * product.quantity;
+    setProductPrice(num.toFixed(2))
+  }, [])
 
   return (
     <div className='product-card-container92367'>
@@ -28,7 +32,7 @@ export default function CartItemCard({ product, deleteItem }) {
       </div>
       <div className='price-container3320'>
         {product.quantity > 1 && (
-          <h2>${((product.price + 1) * product.quantity) - 1}.99</h2>
+          <h2>${productPrice}</h2>
         )}
         {product.quantity === 1 && (
           <h2>{product.price}.99</h2>
