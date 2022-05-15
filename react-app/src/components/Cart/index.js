@@ -62,7 +62,18 @@ export default function Cart() {
             {cartItems.length === 1 && (<h3>Subtotal (1 item): <span className='subtotal-span7058'>${subTotal}</span></h3>)}
           </div>
         </div>
-        <div className='cart-total-container'>Placeholder</div>
+        <div className='cart-total-container'>
+          {cartItems.length >= 1 && (
+            <>
+              <div className='cart-subtotal9281'>
+                {cartItems.length > 1 && (<h3>Subtotal ({cartItems.length} items): <span className='subtotal-span7058'>${subTotal}</span></h3>)}
+                {cartItems.length === 1 && (<h3>Subtotal (1 item): <span className='subtotal-span7058'>${subTotal}</span></h3>)}
+              </div>
+              <div className='checkout-cart6789'>Proceed to checkout</div>
+            </>
+          )}
+
+        </div>
       </div>
     </div>
   )
