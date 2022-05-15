@@ -6,6 +6,8 @@
 html {
   font-family: "Amazon Ember", Arial, sans-serif;
   color: #111;
+  background-color: #EAEDED;
+  box-sizing: border-box;
   line-height: 19px;
   -webkit-text-size-adjust: 100%;
 }
