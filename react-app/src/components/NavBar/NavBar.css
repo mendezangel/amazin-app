@@ -33,7 +33,7 @@ i {
   justify-content: space-between;
   align-items: center;
   float: none;
-  width: 250px;
+  width: 200px;
 }
 
 .nav-bar-logo-container {
@@ -156,7 +156,13 @@ i {
 }
 
 .deliver-to-container .user-location {
+  color: #fff;
   font-size: 14px;
   font-weight: 700;
   line-height: 0.8em;
+}
+
+.deliver-to-container .select-your-address a {
+  text-decoration: none;
+  color: #fff;
 }
