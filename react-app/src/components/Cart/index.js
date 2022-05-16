@@ -60,7 +60,12 @@ export default function Cart() {
     if (!user) return history.push('/login');
     const res = await dispatch(createOrder({ user_id: user.id, total_cost: subTotal, delivery_instructions: deliveryInstructions, items: cartItems }))
 
-    if (res) console.log(res.errors); return setErrors(res.errors);
+    if (res) {
+      return setErrors(res.errors);
+    }
+
+    localStorage.clear()
+    return history.push('/');
   }
 
   if (!isLoaded) return null;
