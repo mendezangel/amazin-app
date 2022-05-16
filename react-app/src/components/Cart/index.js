@@ -13,6 +13,7 @@ export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const [subTotal, setSubTotal] = useState(0);
   const [deliveryInstructions, setDeliveryInstructions] = useState('')
+  const [errors, setErrors] = useState([])
   const [isLoaded, setIsLoaded] = useState(false)
 
   const calculateSubTotal = (arr) => {
@@ -57,7 +58,9 @@ export default function Cart() {
   const onCheckout = async (e) => {
     e.preventDefault();
     if (!user) return history.push('/login');
-    await dispatch(createOrder({ user_id: user.id, total_cost: subTotal, delivery_instructions: deliveryInstructions, items: cartItems }))
+    const res = await dispatch(createOrder({ user_id: user.id, total_cost: subTotal, delivery_instructions: deliveryInstructions, items: cartItems }))
+
+    if (res) console.log(res.errors); return setErrors(res.errors);
   }
 
   if (!isLoaded) return null;

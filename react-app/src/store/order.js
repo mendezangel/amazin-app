@@ -5,6 +5,7 @@ const createOrderAction = payload => {
 }
 
 export const createOrder = (data) => async (dispatch) => {
+  console.log('before res')
   const res = await fetch('/api/orders/new', {
     method: 'POST',
     headers: {
@@ -12,6 +13,16 @@ export const createOrder = (data) => async (dispatch) => {
     },
     body: JSON.stringify(data)
   });
+  console.log('after res')
+  if (res.ok) {
+    const data = await res.json()
+    dispatch(createOrderAction(data))
+    return
+  } else if (res.status < 500) {
+    const data = await res.json();
+
+    if (data.errors) return data.errors;
+  } else return ['An error occurred.'];
 }
 
 const initialState = { orders: [] }
