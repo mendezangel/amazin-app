@@ -33,7 +33,7 @@ i {
   justify-content: space-between;
   align-items: center;
   float: none;
-  width: 200px;
+  width: 250px;
 }
 
 .nav-bar-logo-container {
@@ -120,6 +120,12 @@ i {
   font-size: 12px;
 }
 
+.nav-bar-user {
+  display: flex;
+  align-self: flex-end;
+  padding-bottom: 2px;
+}
+
 .nav-bar-user-p {
   margin: 0;
   font-size: 14px;
@@ -129,8 +135,20 @@ i {
   cursor: pointer;
 }
 
+.nav-bar-orders {
+  display: flex;
+  align-self: flex-end;
+  padding-bottom: 2px;
+}
+
 .nav-bar-orders h3 {
   font-size: 14px;
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+
+.nav-bar-orders h3:hover {
+  opacity: 0.8;
 }
 
 .nav-bar-address-container {
@@ -165,4 +183,22 @@ i {
 .deliver-to-container .select-your-address a {
   text-decoration: none;
   color: #fff;
+}
+
+.nav-bar-cart {
+  display: flex;
+  cursor: pointer;
+  transition: all .1s linear;
+}
+
+.nav-bar-cart:hover {
+  opacity: 0.8;
+}
+
+.nav-bar-cart p {
+  align-self: flex-end;
+  margin: 0;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
 }

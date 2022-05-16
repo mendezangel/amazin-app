@@ -64,7 +64,6 @@ def sign_up():
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        print('\n\n\n\n')
         user = User(
             name=form.data['name'],
             email=form.data['email'],
@@ -79,7 +78,6 @@ def sign_up():
         db.session.commit()
         login_user(user)
         return user.to_dict()
-    print('\n\n\n\nyou hit the error route')
     return {'errors': form.errors}, 401
 
 

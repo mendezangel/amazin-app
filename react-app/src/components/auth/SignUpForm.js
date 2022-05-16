@@ -16,10 +16,9 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    console.log(password, repeatPassword)
     const data = await dispatch(signUp(name, email, password, repeatPassword));
     if (data) {
-      setErrors(data)
+      setErrors(data) //TODO handle validations
     }
   };
 
@@ -47,7 +46,6 @@ const SignUpForm = () => {
   if (user) {
     return <Redirect to='/' />;
   }
-  console.log(errors)
 
   return (
     <div className='20481'>

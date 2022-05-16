@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductCard from '../ProductCard';
+import './HomePage.css';
 
 export default function HomePage() {
   const dispatch = useDispatch()
@@ -10,13 +11,6 @@ export default function HomePage() {
   const [loaded, setLoaded] = useState(false);
 
   const [randProducts, setRandProducts] = useState([])
-
-
-  // useEffect(() => {
-  //   (async () => {
-  //     await dispatch(getAllProducts())
-  //   })();
-  // }, [dispatch])
 
   useEffect(() => {
     function shuffle(array) {
@@ -28,21 +22,30 @@ export default function HomePage() {
           array[randomIndex], array[currentIndex]];
       }
 
-      return setRandProducts(array);
+      return setRandProducts(array.slice(0, 8));
     }
     shuffle(products)
     setLoaded(true)
-  })
+  }, [])
 
   if (!loaded) return null;
 
   return (
-    <div>
-      {randProducts.map(product => {
-        return (
-          <ProductCard product={product} key={product.id} />
-        )
-      })}
-    </div>
+    <>
+      <div className='home-page-products-container1'>
+        {randProducts.slice(0, 4).map(product => {
+          return (
+            <ProductCard product={product} key={product.id} />
+          )
+        })}
+      </div>
+      <div className='home-page-products-container2'>
+        {randProducts.slice(4, 8).map(product => {
+          return (
+            <ProductCard product={product} key={product.id} />
+          )
+        })}
+      </div>
+    </>
   )
 }

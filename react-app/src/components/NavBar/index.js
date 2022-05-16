@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './NavBar.css'
 import image from '../../images/Amazin.png'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
@@ -9,6 +9,7 @@ import UserDropdownMenu from '../UserDropdownMenu'
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
+  const history = useHistory()
 
   const helloUser = () => {
     if (!user) {
@@ -20,6 +21,10 @@ const NavBar = () => {
       <h3 className='nav-bar-user-p'>Hello, {user.name.split(' ')[0]}</h3>
     )
   }
+
+  const cartButton = () => history.push('/cart')
+
+  const ordersButton = () => history.push('/orders')
 
   // if (!user) return null;
 
@@ -33,14 +38,14 @@ const NavBar = () => {
             </Link>
           </div>
           <div className='nav-bar-address-container'>
-            <div class="nav-marker-icon">
-              <i class="fas fa-map-marker-alt"></i>
+            <div className="nav-marker-icon">
+              <i className="fas fa-map-marker-alt"></i>
             </div>
-            <div class="deliver-to-container">
-              {user && (<><div class="deliver-to-user">Deliver to {user.name.split(' ')[0]}</div>
-                <div class="user-location">{user.city} {user.zip_code}</div></>)}
-              {!user && (<><div class="deliver-to-user">Hello, Guest</div>
-                <div class="select-your-address">
+            <div className="deliver-to-container">
+              {user && (<><div className="deliver-to-user">Deliver to {user.name.split(' ')[0]}</div>
+                <div className="user-location">{user.city} {user.zip_code}</div></>)}
+              {!user && (<><div className="deliver-to-user">Hello, Guest</div>
+                <div className="select-your-address">
                   <Link to='/login'>
                     Select your address
                   </Link>
@@ -67,10 +72,10 @@ const NavBar = () => {
             </Popup>
           </div>
           <div className='nav-bar-orders'>
-            <h3>Orders</h3>
+            <h3 onClick={ordersButton}>Orders</h3>
           </div>
-          <div className='nav-bar-cart'>
-            <ShoppingCartOutlinedIcon fontSize='large' style={{ color: '#fff' }} />
+          <div className='nav-bar-cart' onClick={cartButton}>
+            <ShoppingCartOutlinedIcon fontSize='large' style={{ color: '#fff' }} /><p className='nav-cart-text'>Cart</p>
           </div>
         </div>
       </div>
