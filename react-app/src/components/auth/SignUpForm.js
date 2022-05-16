@@ -16,11 +16,10 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(name, email, password));
-      if (data) {
-        setErrors(data)
-      }
+    console.log(password, repeatPassword)
+    const data = await dispatch(signUp(name, email, password, repeatPassword));
+    if (data) {
+      setErrors(data)
     }
   };
 
@@ -48,6 +47,7 @@ const SignUpForm = () => {
   if (user) {
     return <Redirect to='/' />;
   }
+  console.log(errors)
 
   return (
     <div className='20481'>

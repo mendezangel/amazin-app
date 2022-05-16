@@ -3,6 +3,7 @@ from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
+from faker import Faker
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -59,18 +60,26 @@ def sign_up():
     """
     Creates a new user and logs them in
     """
+    fake = Faker()
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        print('\n\n\n\n')
         user = User(
-            username=form.data['username'],
+            name=form.data['name'],
             email=form.data['email'],
-            password=form.data['password']
+            password=form.data['password'],
+            address=fake.street_address(),
+            city=fake.city(),
+            state=fake.address().split(',')[1],
+            zip_code=fake.postcode(),
+            country=fake.country()
         )
         db.session.add(user)
         db.session.commit()
         login_user(user)
         return user.to_dict()
+    print('\n\n\n\nyou hit the error route')
     return {'errors': form.errors}, 401
 
 

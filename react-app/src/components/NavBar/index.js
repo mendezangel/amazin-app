@@ -21,7 +21,7 @@ const NavBar = () => {
     )
   }
 
-  if (!user) return null;
+  // if (!user) return null;
 
   return (
     <header className='nav-bar-header'>
@@ -39,7 +39,7 @@ const NavBar = () => {
             <div class="deliver-to-container">
               {user && (<><div class="deliver-to-user">Deliver to {user.name.split(' ')[0]}</div>
                 <div class="user-location">{user.city} {user.zip_code}</div></>)}
-              {!user && (<><div class="deliver-to-user">Hello</div>
+              {!user && (<><div class="deliver-to-user">Hello, Guest</div>
                 <div class="select-your-address">
                   <Link to='/login'>
                     Select your address
