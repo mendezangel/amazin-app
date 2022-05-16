@@ -4,8 +4,8 @@ import ProductCard from '../ProductCard';
 import './HomePage.css';
 
 export default function HomePage() {
-  const dispatch = useDispatch()
-  const user = useSelector(state => state.session.user);
+  // const dispatch = useDispatch()
+  // const user = useSelector(state => state.session.user);
   const products = useSelector(state => state.product.products)
 
   const [loaded, setLoaded] = useState(false);

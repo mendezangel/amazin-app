@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom'
 import './Cart.css';
 import CartItemCard from './CartItemCard';
+import { createOrder } from '../../store/order';
 
 export default function Cart() {
+  const user = useSelector(state => state.session.user)
+  const history = useHistory()
+  const dispatch = useDispatch()
 
   const [cartItems, setCartItems] = useState([]);
+  const [subTotal, setSubTotal] = useState(0);
+  const [deliveryInstructions, setDeliveryInstructions] = useState('')
   const [isLoaded, setIsLoaded] = useState(false)
-  const [subTotal, setSubTotal] = useState(0)
 
   const calculateSubTotal = (arr) => {
     let num = 0;
@@ -45,6 +52,14 @@ export default function Cart() {
     calculateSubTotal(cartItems)
   }
 
+  const updateInstructions = (e) => setDeliveryInstructions(e.target.value)
+
+  const onCheckout = async (e) => {
+    e.preventDefault();
+    if (!user) return history.push('/login');
+    await dispatch(createOrder({ user_id: user.id, total_cost: subTotal, items: cartItems }))
+  }
+
   if (!isLoaded) return null;
 
   return (
@@ -69,7 +84,15 @@ export default function Cart() {
                 {cartItems.length > 1 && (<h3>Subtotal ({cartItems.length} items): <span className='subtotal-span7058'>${subTotal}</span></h3>)}
                 {cartItems.length === 1 && (<h3>Subtotal (1 item): <span className='subtotal-span7058'>${subTotal}</span></h3>)}
               </div>
-              <div className='checkout-cart6789'>Proceed to checkout</div>
+              <textarea
+                className='deliveryInstructionsText'
+                name='delivery_instructions'
+                placeholder='Delivery Instructions'
+                maxLength={100}
+                value={deliveryInstructions}
+                onChange={updateInstructions}
+              />
+              <div className='checkout-cart6789' onClick={onCheckout}>Proceed to checkout</div>
             </>
           )}
 

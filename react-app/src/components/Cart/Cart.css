@@ -48,7 +48,19 @@
   padding: 20px;
   width: 260px;
   min-width: 26px;
-  height: 70px;
+  height: fit-content;
+}
+
+.cart-total-container .deliveryInstructionsText {
+  font-family: inherit;
+  margin-bottom: 20px;
+  font-size: 14px;
+  padding: 5px;
+  resize: none;
+}
+
+.cart-total-container .deliveryInstructionsText:focus {
+  outline: none;
 }
 
 .cart-subtotal9281 h3 {
