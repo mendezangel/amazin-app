@@ -57,7 +57,7 @@ export default function Cart() {
   const onCheckout = async (e) => {
     e.preventDefault();
     if (!user) return history.push('/login');
-    await dispatch(createOrder({ user_id: user.id, total_cost: subTotal, items: cartItems }))
+    await dispatch(createOrder({ user_id: user.id, total_cost: subTotal, delivery_instructions: deliveryInstructions, items: cartItems }))
   }
 
   if (!isLoaded) return null;

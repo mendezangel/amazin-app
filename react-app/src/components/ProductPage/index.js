@@ -23,6 +23,7 @@ export default function ProductPage() {
     if (inStock) {
       let cartItem = product;
       cartItem.quantity = parseInt(quantity)
+      cartItem.id = product.id
       localStorage.setItem(id, JSON.stringify(cartItem))
       return history.push('/cart')
     }
