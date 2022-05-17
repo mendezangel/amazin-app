@@ -1,8 +1,10 @@
 .home-page-products-container1 {
   /* border: solid black; */
   display: flex;
+  justify-content: center;
 }
 
 .home-page-products-container2 {
   display: flex;
+  justify-content: center;
 }

@@ -9,6 +9,7 @@ import NavBar from './components/NavBar/'
 import HomePage from './components/HomePage';
 import ProductPage from './components/ProductPage';
 import Cart from './components/Cart';
+import Order from './components/Order';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,6 +48,10 @@ function App() {
         <Route path='/cart' exact={true}>
           <NavBar />
           <Cart />
+        </Route>
+        <Route path='/orders' exact={true}>
+          <NavBar />
+          <Order />
         </Route>
       </Switch>
     </BrowserRouter>

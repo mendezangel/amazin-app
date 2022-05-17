@@ -41,6 +41,7 @@ export default function ProductPage() {
     const date2 = new Date()
 
     date.setDate(date.getDate() + 5)
+    console.log(date.toDateString())
     const freeDeliveryArr = date.toDateString().split(' ')
     setFreeDelivery(`${freeDeliveryArr[0]}, ${freeDeliveryArr[1]} ${freeDeliveryArr[2]}`)
 

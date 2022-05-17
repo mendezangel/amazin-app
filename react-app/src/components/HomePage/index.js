@@ -31,7 +31,7 @@ export default function HomePage() {
   if (!loaded) return null;
 
   return (
-    <>
+    <div className='whole-page-div'>
       <div className='home-page-products-container1'>
         {randProducts.slice(0, 4).map(product => {
           return (
@@ -46,6 +46,6 @@ export default function HomePage() {
           )
         })}
       </div>
-    </>
+    </div>
   )
 }

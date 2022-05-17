@@ -1,11 +1,24 @@
 const CREATE = 'orders/create'
+const LOAD = 'orders/load'
 
 const createOrderAction = payload => {
   return { type: CREATE, payload }
 }
 
+const loadOrdersAction = payload => {
+  return { type: LOAD, payload }
+}
+
+export const loadOrders = (id) => async (dispatch) => {
+  const res = await fetch(`/api/orders/`)
+
+  if (res.ok) {
+    const orders = await res.json()
+    dispatch(loadOrdersAction(orders.orders))
+  }
+}
+
 export const createOrder = (data) => async (dispatch) => {
-  console.log('before res')
   const res = await fetch('/api/orders/new', {
     method: 'POST',
     headers: {
@@ -13,7 +26,6 @@ export const createOrder = (data) => async (dispatch) => {
     },
     body: JSON.stringify(data)
   });
-  console.log('after res')
   if (res.ok) {
     const data = await res.json()
     dispatch(createOrderAction(data))
@@ -30,6 +42,15 @@ const OrderReducer = (state = initialState, action) => {
   let newState;
 
   switch (action.type) {
+    case LOAD:
+      newState = { ...state, orders: [...state.orders] }
+      newState.orders = [...action.payload];
+      for (let i = 0; i < action.payload.length; i++) {
+        const order = action.payload[i];
+        newState[order.id] = order;
+      }
+      return newState;
+
     case CREATE:
       newState = { ...state, orders: [...state.orders] }
       newState[action.payload.id] = action.payload

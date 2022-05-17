@@ -1,8 +1,15 @@
 from flask import Blueprint, request
 from app.models import db, Order, Order_Item
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 order_routes = Blueprint('orders', __name__)
+
+@order_routes.route('/')
+@login_required
+def get_orders():
+  orders = Order.query.filter_by(user_id=current_user.id).all()
+
+  return {'orders': [order.to_dict() for order in orders]}
 
 @order_routes.route('/new', methods=['POST'])
 @login_required
