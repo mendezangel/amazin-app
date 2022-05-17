@@ -1,6 +1,7 @@
 const CREATE = 'orders/create'
 const LOAD = 'orders/load'
 const DELETE = 'orders/delete'
+const UPDATE = 'orders/update'
 
 const createOrderAction = payload => {
   return { type: CREATE, payload }
@@ -12,6 +13,28 @@ const loadOrdersAction = payload => {
 
 const deleteOrderAction = payload => {
   return { type: DELETE, payload }
+}
+
+const updateOrderAction = payload => {
+  return { type: DELETE, payload }
+}
+
+export const updateOrder = (id, instructions) => async (dispatch) => {
+  const res = await fetch(`/api/orders/update`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      id,
+      instructions
+    })
+  })
+
+  if (res.ok) {
+    const data = await res.json()
+    dispatch(updateOrderAction(data))
+  }
 }
 
 export const deleteOrder = (id) => async (dispatch) => {
@@ -76,10 +99,10 @@ const OrderReducer = (state = initialState, action) => {
     case DELETE:
       newState = { ...state, orders: [...state.orders] }
       delete newState[action.payload.id];
-      // for (let i = 0; i < newState.orders.length; i++) {
-      //   const order = newState.orders[i];
-      //   if (order.id === action.payload.id) newState.orders.splice(i, 1)
-      // }
+      for (let i = 0; i < newState.orders.length; i++) {
+        const order = newState.orders[i];
+        if (order.id === action.payload.id) newState.orders.splice(i, 1)
+      }
       return newState;
 
     default:

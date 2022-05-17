@@ -32,6 +32,15 @@ export default function OrderCard({ order }) {
     setTextArea(e.target.value)
   }
 
+  const onUpdateInstructions = (e) => {
+    e.preventDefault()
+    const data = {
+      id: e.target.id,
+      delivery_instructions: textArea
+    }
+
+  }
+
   if (!loaded) return null;
 
   return (
@@ -57,10 +66,10 @@ export default function OrderCard({ order }) {
             modal
           >
             <div className='update-instructions-modal-container'>
-              <textarea className='modal-textarea' value={textArea} onChange={updateTextArea} />
+              <textarea className='modal-textarea' value={textArea} onChange={updateTextArea} maxLength={100} />
               <div className='modal-bts-container'>
                 <button className='modal-cancel-button modal-button'>Cancel</button>
-                <button className='modal-submit-button modal-button'>Update</button>
+                <button className='modal-submit-button modal-button' id={order.id}>Update</button>
               </div>
             </div>
           </Popup>

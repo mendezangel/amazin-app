@@ -61,3 +61,21 @@ def delete_order(id):
   db.session.delete(order)
   db.session.commit()
   return order.to_dict()
+
+@order_routes.route('/update', methods=['PATCH'])
+@login_required
+def update_order():
+  data = request.json
+  order = Order.query.get(data['id'])
+
+  errors = []
+  if len(data['instructions']) > 100:
+    errors.append('Exceeded 100 character limit count.')
+    return {'errors': errors}, 401
+  if len(data['instructions'] > 0):
+    order.delivery_instructions = data['instructions']
+  else:
+    order.delivery_instructions="Deliver to front door."
+
+  db.session.commit()
+  return order.to_dict()
