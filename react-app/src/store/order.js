@@ -59,7 +59,7 @@ export const loadOrders = (id) => async (dispatch) => {
 }
 
 export const createOrder = (data) => async (dispatch) => {
-  const res = await fetch('/api/orders/new', {
+  const res = await fetch('/api/orders/new/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
