@@ -1,5 +1,6 @@
 const CREATE = 'orders/create'
 const LOAD = 'orders/load'
+const DELETE = 'orders/delete'
 
 const createOrderAction = payload => {
   return { type: CREATE, payload }
@@ -7,6 +8,22 @@ const createOrderAction = payload => {
 
 const loadOrdersAction = payload => {
   return { type: LOAD, payload }
+}
+
+const deleteOrderAction = payload => {
+  return { type: DELETE, payload }
+}
+
+export const deleteOrder = (id) => async (dispatch) => {
+  console.log('YOU HIT THIS THUNK')
+  const res = await fetch(`/api/orders/delete/${id}`, {
+    method: 'DELETE'
+  });
+
+  if (res.ok) {
+    const order = res.json()
+    dispatch(deleteOrderAction(order));
+  }
 }
 
 export const loadOrders = (id) => async (dispatch) => {
@@ -56,6 +73,15 @@ const OrderReducer = (state = initialState, action) => {
       newState[action.payload.id] = action.payload
       newState.orders.push(action.payload)
       return newState
+
+    case DELETE:
+      newState = { ...state, orders: [...state.orders] }
+      delete newState[action.payload.id];
+      // for (let i = 0; i < newState.orders.length; i++) {
+      //   const order = newState.orders[i];
+      //   if (order.id === action.payload.id) newState.orders.splice(i, 1)
+      // }
+      return newState;
 
     default:
       return state;

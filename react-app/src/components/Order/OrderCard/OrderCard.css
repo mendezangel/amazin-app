@@ -10,6 +10,21 @@
   border-bottom: solid #D5D9D9 1px;
   border-radius: 8px 8px 0 0;
   background-color: #EAEDED;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-card-child1 .update-delivery-instructions {
+  font-size: 14px;
+  margin-right: 12px;
+  cursor: pointer;
+  color: #007185
+}
+
+.order-card-child1 .update-delivery-instructions:hover {
+  color: #C7511F;
+  text-decoration: underline;
 }
 
 .order-card-details-container {

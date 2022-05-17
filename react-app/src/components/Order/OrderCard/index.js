@@ -1,11 +1,13 @@
 import React, { useEffect, useReducer, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import './OrderCard.css'
+import deleteOrder from '../../../store/order';
 
 export default function OrderCard({ order }) {
+  const dispatch = useDispatch()
 
-  const [products, setProducts] = useState([...order.products_ordered])
+  const [products, setProducts] = useState([])
   const [deliveryDate, setDeliveryDate] = useState('')
   const [loaded, setLoaded] = useState(false)
 
@@ -13,12 +15,15 @@ export default function OrderCard({ order }) {
 
   useEffect(() => {
     setDeliveryDate(new Date(new Date(order.created_at).setDate(new Date(order.created_at).getDate() + 2)))
+    setProducts(order.products_ordered)
     setLoaded(true)
   }, [])
 
-  if (!loaded) return null;
+  const handleDelete = async (e) => {
+    await dispatch(deleteOrder(e.target.id))
+  }
 
-  console.log(deliveryDate.toDateString())
+  if (!loaded) return null;
 
   return (
     <div className='order-card-container'>
@@ -37,6 +42,9 @@ export default function OrderCard({ order }) {
             <p>{order.user.name}</p>
           </div>
         </div>
+        {deliveryDate > new Date() && (
+          <div className='update-delivery-instructions'>Update Delivery Instructions</div>
+        )}
       </div>
       <div className='order-card-child2'>
         <div className='order-card-child2-text'>
@@ -61,7 +69,7 @@ export default function OrderCard({ order }) {
           })}
         </div>
       </div>
-      <div className='order-card-child3'><p>Delete archive</p></div>
+      <div className='order-card-child3'><p onClick={handleDelete} id={order.id}>Delete archive</p></div>
     </div>
   )
 }

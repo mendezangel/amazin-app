@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductCard from '../ProductCard';
 import './HomePage.css';
+import { loadOrders } from '../../store/order';
 
 export default function HomePage() {
-  // const dispatch = useDispatch()
-  // const user = useSelector(state => state.session.user);
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.session.user);
   const products = useSelector(state => state.product.products)
 
   const [loaded, setLoaded] = useState(false);
@@ -25,6 +26,7 @@ export default function HomePage() {
       return setRandProducts(array.slice(0, 8));
     }
     shuffle(products)
+    dispatch(loadOrders(user.id))
     setLoaded(true)
   }, [])
 
