@@ -15,7 +15,7 @@ export default function Order() {
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
-    dispatch(loadOrders(user.id))
+    dispatch(loadOrders(user?.id))
     setLoaded(true)
   }, [dispatch])
 
