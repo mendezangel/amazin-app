@@ -20,5 +20,6 @@ class Order(db.Model):
       'total_cost': self.total_cost,
       'delivery_instructions': self.delivery_instructions,
       'created_at': self.created_at,
-      'products_ordered': [product.to_dict() for product in self.products_ordered]
+      'products_ordered': [product.to_dict() for product in self.products_ordered],
+      'user': self.user.to_dict()
     }

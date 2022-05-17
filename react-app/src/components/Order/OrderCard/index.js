@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import './OrderCard.css'
@@ -6,7 +6,19 @@ import './OrderCard.css'
 export default function OrderCard({ order }) {
 
   const [products, setProducts] = useState([...order.products_ordered])
+  const [deliveryDate, setDeliveryDate] = useState('')
+  const [loaded, setLoaded] = useState(false)
 
+  const orderPlaced = order.created_at.split(' ')
+
+  useEffect(() => {
+    setDeliveryDate(new Date(new Date(order.created_at).setDate(new Date(order.created_at).getDate() + 2)))
+    setLoaded(true)
+  }, [])
+
+  if (!loaded) return null;
+
+  console.log(deliveryDate.toDateString())
 
   return (
     <div className='order-card-container'>
@@ -14,20 +26,26 @@ export default function OrderCard({ order }) {
         <div className='order-card-details-container'>
           <div className='details-order-placed'>
             <p>ORDER PLACED</p>
-            <p>DATE</p>
+            <p>{orderPlaced[2]} {orderPlaced[1]}, {orderPlaced[3]}</p>
           </div>
           <div className='details-total'>
             <p>TOTAL</p>
-            <p className=''>324</p>
+            <p className=''>${order.total_cost}</p>
           </div>
           <div className='details-ship-to'>
             <p>SHIP TO</p>
-            <p>ANGEL</p>
+            <p>{order.user.name}</p>
           </div>
         </div>
       </div>
       <div className='order-card-child2'>
-        <div className='order-card-child2-text'><h2>Delivered Placeholder</h2></div>
+        <div className='order-card-child2-text'>
+          {order.created_at && deliveryDate < new Date() ?
+            <h2 className='order-delivered-text'>Delivered {deliveryDate.toDateString().split(' ')[1]} {deliveryDate.toDateString().split(' ')[2]}</h2>
+            :
+            <h2 className='order-not-delivered-text'>Expected Delivery: {deliveryDate.toDateString().split(' ')[1]} {deliveryDate.toDateString().split(' ')[2]}</h2>
+          }
+        </div>
         <div className='item-details-container6840'>
           {products.map(product => {
             return (
@@ -43,7 +61,7 @@ export default function OrderCard({ order }) {
           })}
         </div>
       </div>
-      <div className='order-card-child3'>Delete archive</div>
+      <div className='order-card-child3'><p>Delete archive</p></div>
     </div>
   )
 }
