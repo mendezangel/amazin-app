@@ -1,11 +1,13 @@
 import React, { useEffect, useReducer, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import './OrderCard.css'
-import deleteOrder from '../../../store/order';
+import { deleteOrder } from '../../../store/order';
+import { loadOrders } from '../../../store/order';
 
 export default function OrderCard({ order }) {
   const dispatch = useDispatch()
+  const user = useSelector(state => state.session.user)
 
   const [products, setProducts] = useState([])
   const [deliveryDate, setDeliveryDate] = useState('')
@@ -21,6 +23,7 @@ export default function OrderCard({ order }) {
 
   const handleDelete = async (e) => {
     await dispatch(deleteOrder(e.target.id))
+    await dispatch(loadOrders(user.id))
   }
 
   if (!loaded) return null;

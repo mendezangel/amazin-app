@@ -18,7 +18,7 @@ export default function Order() {
     setLoaded(true)
   }, [dispatch])
 
-  if (!user) return history.push('/login')
+  // if (!user) return history.push('/login')
   if (!loaded) return null;
 
   return (

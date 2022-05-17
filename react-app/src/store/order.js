@@ -15,7 +15,6 @@ const deleteOrderAction = payload => {
 }
 
 export const deleteOrder = (id) => async (dispatch) => {
-  console.log('YOU HIT THIS THUNK')
   const res = await fetch(`/api/orders/delete/${id}`, {
     method: 'DELETE'
   });

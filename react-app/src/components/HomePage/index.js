@@ -26,7 +26,7 @@ export default function HomePage() {
       return setRandProducts(array.slice(0, 8));
     }
     shuffle(products)
-    dispatch(loadOrders(user.id))
+    dispatch(loadOrders(user?.id))
     setLoaded(true)
   }, [])
 

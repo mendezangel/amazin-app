@@ -55,10 +55,9 @@ def new_order():
 
   return order.to_dict()
 
-@order_routes.route('/delete/<int:id>')
+@order_routes.route('/delete/<int:id>', methods=['DELETE'])
 def delete_order(id):
-  print('\n\n\n\n\nYOU HIT THIS ROUTE\n\n\n\n')
   order = Order.query.get(id)
   db.session.delete(order)
-  db.session.commit
+  db.session.commit()
   return order.to_dict()
