@@ -19,5 +19,6 @@ class Order(db.Model):
       'user_id': self.user_id,
       'total_cost': self.total_cost,
       'delivery_instructions': self.delivery_instructions,
-      'created_at': self.created_at
+      'created_at': self.created_at,
+      'products_ordered': [product.to_dict() for product in self.products_ordered]
     }
