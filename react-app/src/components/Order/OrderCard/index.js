@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import './OrderCard.css'
 import { deleteOrder } from '../../../store/order';
 import { loadOrders } from '../../../store/order';
+import Popup from 'reactjs-popup';
 
 export default function OrderCard({ order }) {
   const dispatch = useDispatch()
@@ -11,6 +12,7 @@ export default function OrderCard({ order }) {
 
   const [products, setProducts] = useState([])
   const [deliveryDate, setDeliveryDate] = useState('')
+  const [textArea, setTextArea] = useState(order.delivery_instructions)
   const [loaded, setLoaded] = useState(false)
 
   const orderPlaced = order.created_at.split(' ')
@@ -24,6 +26,10 @@ export default function OrderCard({ order }) {
   const handleDelete = async (e) => {
     await dispatch(deleteOrder(e.target.id))
     await dispatch(loadOrders(user.id))
+  }
+
+  const updateTextArea = (e) => {
+    setTextArea(e.target.value)
   }
 
   if (!loaded) return null;
@@ -46,7 +52,18 @@ export default function OrderCard({ order }) {
           </div>
         </div>
         {deliveryDate > new Date() && (
-          <div className='update-delivery-instructions'>Update Delivery Instructions</div>
+          <Popup
+            trigger={<div className='update-delivery-instructions'>Update Delivery Instructions</div>}
+            modal
+          >
+            <div className='update-instructions-modal-container'>
+              <textarea className='modal-textarea' value={textArea} onChange={updateTextArea} />
+              <div className='modal-bts-container'>
+                <button className='modal-cancel-button modal-button'>Cancel</button>
+                <button className='modal-submit-button modal-button'>Update</button>
+              </div>
+            </div>
+          </Popup>
         )}
       </div>
       <div className='order-card-child2'>

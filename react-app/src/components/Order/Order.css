@@ -20,3 +20,70 @@
   padding: 20px 0;
   border-bottom: solid #D5D9D9 1px;
 }
+
+.popup-overlay {
+  background: #08080856;
+}
+
+[data-popup='tooltip'].popup-overlay {
+  background: transparent;
+}
+
+.popup-arrow {
+  color: #ffffff00;
+}
+
+[role='tooltip'].popup-content {
+  width: fit-content;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+  font-size: 20px;
+}
+
+.update-instructions-modal-container {
+  border: solid black 1px;
+  width: 250px;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 17px 13px;
+  border: solid #D5D9D9 1px;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.update-instructions-modal-container .modal-textarea {
+  box-sizing: border-box;
+  resize: none;
+  width: 100%;
+  height: 50px;
+  font-size: 14px;
+  font-family: inherit;
+  padding: 5px 5px;
+  margin-bottom: 7px;
+}
+
+.update-instructions-modal-container .modal-textarea:focus {
+  outline: none;
+}
+
+.update-instructions-modal-container .modal-bts-container {
+  /* border: solid black 1px; */
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-bts-container .modal-button {
+  border: none;
+  background-color: #FFD814;
+  border-color: #FCD200;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
+  font-size: 14px;
+  padding: 7px 12px;
+}
+
+.modal-bts-container .modal-button:hover {
+  cursor: pointer;
+  background: #F7CA00;
+  border-color: #F2C200;
+  box-shadow: 0 2px 5px 0 rgba(213, 217, 217, .5);
+}
