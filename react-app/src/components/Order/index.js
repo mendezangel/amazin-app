@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import OrderCard from './OrderCard'
 import { loadOrders } from '../../store/order'
+import './Order.css'
 
 export default function Order() {
   const history = useHistory()
@@ -22,13 +23,15 @@ export default function Order() {
   if (!loaded) return null;
 
   return (
-    <div>
-      Order
-      {orders.map(order => {
-        return (
-          <OrderCard order={order} key={order.id} />
-        )
-      })}
+    <div className='whole-page-div23467'>
+      <div className='your-orders-container'>
+        <h1>Your Orders</h1>
+        {orders.map(order => {
+          return (
+            <OrderCard order={order} key={order.id} />
+          )
+        })}
+      </div>
     </div>
   )
 }

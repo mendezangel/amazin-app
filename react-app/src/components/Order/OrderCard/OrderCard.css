@@ -3,7 +3,8 @@
   border-radius: 8px;
   width: 915px;
   /* padding: 10px; */
-  margin: 15px 0;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .order-card-child1 {
