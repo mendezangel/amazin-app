@@ -7,7 +7,7 @@ order_routes = Blueprint('orders', __name__)
 @order_routes.route('/')
 @login_required
 def get_orders():
-  orders = Order.query.filter_by(user_id=current_user.id).all()
+  orders = Order.query.filter_by(user_id=current_user.id).order_by(Order.created_at.desc()).all()
 
   return {'orders': [order.to_dict() for order in orders]}
 
@@ -72,10 +72,10 @@ def update_order():
   if len(data['instructions']) > 100:
     errors.append('Exceeded 100 character limit count.')
     return {'errors': errors}, 401
-  if len(data['instructions'] > 0):
+  if len(data['instructions']) > 0:
     order.delivery_instructions = data['instructions']
   else:
     order.delivery_instructions="Deliver to front door."
 
   db.session.commit()
-  return order.to_dict()
+  return {'order': [order.to_dict()]}

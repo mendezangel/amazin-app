@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import './OrderCard.css'
 import { deleteOrder } from '../../../store/order';
 import { loadOrders } from '../../../store/order';
+import { updateOrder } from '../../../store/order'
 import Popup from 'reactjs-popup';
 
 export default function OrderCard({ order }) {
@@ -13,9 +14,11 @@ export default function OrderCard({ order }) {
   const [products, setProducts] = useState([])
   const [deliveryDate, setDeliveryDate] = useState('')
   const [textArea, setTextArea] = useState(order.delivery_instructions)
+  const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false)
 
   const orderPlaced = order.created_at.split(' ')
+  const closeModal = () => setOpen(false)
 
   useEffect(() => {
     setDeliveryDate(new Date(new Date(order.created_at).setDate(new Date(order.created_at).getDate() + 2)))
@@ -32,14 +35,11 @@ export default function OrderCard({ order }) {
     setTextArea(e.target.value)
   }
 
-  const onUpdateInstructions = (e) => {
-    e.preventDefault()
-    const data = {
-      id: e.target.id,
-      delivery_instructions: textArea
-    }
-
+  const onUpdateInstructions = async (e) => {
+    await dispatch(updateOrder(e.target.id, textArea))
+    closeModal()
   }
+
 
   if (!loaded) return null;
 
@@ -61,18 +61,24 @@ export default function OrderCard({ order }) {
           </div>
         </div>
         {deliveryDate > new Date() && (
-          <Popup
-            trigger={<div className='update-delivery-instructions'>Update Delivery Instructions</div>}
-            modal
-          >
-            <div className='update-instructions-modal-container'>
-              <textarea className='modal-textarea' value={textArea} onChange={updateTextArea} maxLength={100} />
-              <div className='modal-bts-container'>
-                <button className='modal-cancel-button modal-button'>Cancel</button>
-                <button className='modal-submit-button modal-button' id={order.id}>Update</button>
+          <>
+            <div className='update-delivery-instructions' onClick={() => setOpen(o => !o)}>Update Delivery Instructions</div>
+            <Popup
+              open={open}
+              closeOnDocumentClick
+              onClose={closeModal}
+              // trigger={<div className='update-delivery-instructions'>Update Delivery Instructions</div>}
+              modal
+            >
+              <div className='update-instructions-modal-container'>
+                <textarea className='modal-textarea' value={textArea} onChange={updateTextArea} maxLength={100} />
+                <div className='modal-bts-container'>
+                  <button className='modal-cancel-button modal-button' onClick={closeModal}>Cancel</button>
+                  <button className='modal-submit-button modal-button' onClick={onUpdateInstructions} id={order.id}>Update</button>
+                </div>
               </div>
-            </div>
-          </Popup>
+            </Popup>
+          </>
         )}
       </div>
       <div className='order-card-child2'>

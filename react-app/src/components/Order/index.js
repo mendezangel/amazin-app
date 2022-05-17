@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom'
 import OrderCard from './OrderCard'
 import { loadOrders } from '../../store/order'
 import './Order.css'
-import { updateOrder } from '../../store/order'
 
 export default function Order() {
   const history = useHistory()
@@ -19,13 +18,6 @@ export default function Order() {
     dispatch(loadOrders(user.id))
     setLoaded(true)
   }, [dispatch])
-
-  const onUpdateInstructions = (id, instructions) => {
-    const data = {
-      id,
-      instructions
-    }
-  }
 
   // if (!user) return history.push('/login')
   if (!loaded) return null;

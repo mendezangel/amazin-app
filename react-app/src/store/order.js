@@ -16,7 +16,7 @@ const deleteOrderAction = payload => {
 }
 
 const updateOrderAction = payload => {
-  return { type: DELETE, payload }
+  return { type: UPDATE, payload }
 }
 
 export const updateOrder = (id, instructions) => async (dispatch) => {
@@ -33,7 +33,7 @@ export const updateOrder = (id, instructions) => async (dispatch) => {
 
   if (res.ok) {
     const data = await res.json()
-    dispatch(updateOrderAction(data))
+    dispatch(loadOrders(data.order))
   }
 }
 
