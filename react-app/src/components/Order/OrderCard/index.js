@@ -36,8 +36,10 @@ export default function OrderCard({ order }) {
   }
 
   const onUpdateInstructions = async (e) => {
-    await dispatch(updateOrder(e.target.id, textArea))
+    const order = await dispatch(updateOrder(e.target.id, textArea))
+    console.log(order)
     closeModal()
+    setTextArea(order.order[0].delivery_instructions)
   }
 
 

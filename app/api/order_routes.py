@@ -75,7 +75,8 @@ def update_order():
   if len(data['instructions']) > 0:
     order.delivery_instructions = data['instructions']
   else:
-    order.delivery_instructions="Deliver to front door."
+    current = order.delivery_instructions
+    order.delivery_instructions = current
 
   db.session.commit()
   return {'order': [order.to_dict()]}

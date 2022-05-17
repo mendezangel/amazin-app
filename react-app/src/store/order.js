@@ -34,6 +34,7 @@ export const updateOrder = (id, instructions) => async (dispatch) => {
   if (res.ok) {
     const data = await res.json()
     dispatch(loadOrders(data.order))
+    return data;
   }
 }
 
