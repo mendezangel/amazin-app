@@ -3,7 +3,7 @@ from faker import Faker
 
 def seed_reviews():
   fake = Faker()
-  for x in range(300):
+  for x in range(1000):
     review = Review(
       owner_id=fake.random_int(min=1, max=30),
       product_id=fake.random_int(min=1, max=100),
