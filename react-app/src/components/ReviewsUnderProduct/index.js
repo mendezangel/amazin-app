@@ -47,6 +47,7 @@ export default function ReviewsUnderProduct({ reviews }) {
           value={overallRating}
           edit={false}
           size={35}
+          color2={'#FFA41C'}
         />
         <p className='global-review-count'>{reviews.length} global ratings</p>
         <div className='review-this-product'>
@@ -59,7 +60,10 @@ export default function ReviewsUnderProduct({ reviews }) {
         {reviews.map(review => {
           return (
             <div className='review-container89023'>
-              <p className='reviewee-name'>{review.user.name}</p>
+              <div className='reviewee-name'>
+                <i class="fas fa-user-circle"></i>
+                <p>{review.user.name}</p>
+              </div>
               <div className='stars-headline-container'>
                 <ReactStars
                   className='review-stars9237'
@@ -67,6 +71,7 @@ export default function ReviewsUnderProduct({ reviews }) {
                   value={review.rating}
                   edit={false}
                   size={20}
+                  color2={'#FFA41C'}
                 />
                 <p>{review.headline}</p>
               </div>

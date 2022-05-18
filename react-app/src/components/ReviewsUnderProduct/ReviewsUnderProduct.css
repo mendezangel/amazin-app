@@ -69,9 +69,20 @@
 }
 
 .review-container89023 .reviewee-name {
-  margin: 0;
+  display: flex;
+}
+
+.review-container89023 .reviewee-name p {
+  margin: 0 10px;
   font-size: 13px;
+  align-self: center;
   unicode-bidi: isolate;
+}
+
+.reviewee-name .fas {
+  color: #a9b7b8;
+  font-weight: 900;
+  font-size: 30px;
 }
 
 .review-container89023 .review-creation-date {
