@@ -24,7 +24,10 @@ const NavBar = () => {
 
   const cartButton = () => history.push('/cart')
 
-  const ordersButton = () => history.push('/orders')
+  const ordersButton = () => {
+    if (!user) return history.push('/login')
+    history.push('/orders')
+  }
 
   // if (!user) return null;
 
