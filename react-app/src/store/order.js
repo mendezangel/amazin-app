@@ -50,10 +50,10 @@ export const deleteOrder = (id) => async (dispatch) => {
 }
 
 export const loadOrders = (id) => async (dispatch) => {
-  const res = await fetch(`/api/orders/`)
+  const res = await fetch(`/api/orders/`);
 
   if (res.ok) {
-    const orders = await res.json()
+    const orders = await res.json();
     dispatch(loadOrdersAction(orders.orders))
   }
 }

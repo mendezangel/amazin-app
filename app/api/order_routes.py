@@ -11,7 +11,7 @@ def get_orders():
 
   return {'orders': [order.to_dict() for order in orders]}
 
-@order_routes.route('/new', methods=['POST'])
+@order_routes.route('/new/', methods=['POST'])
 @login_required
 def new_order():
   data = request.json

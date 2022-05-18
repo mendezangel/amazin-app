@@ -20,7 +20,7 @@ export const getOneProduct = (id) => async (dispatch) => {
     dispatch(products(product))
   }
 }
-const initialState = { products: [], reviews: {} }
+const initialState = { products: [] }
 
 const ProductReducer = (state = initialState, action) => {
   let newState;
@@ -28,8 +28,8 @@ const ProductReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD:
       newState = { ...state };
-      newState.products = [...newState.products]
-      newState.reviews = { ...newState.reviews }
+      newState.products = [...state.products]
+      // newState.reviews = { ...newState.reviews }
       newState.products = [...action.payload]
       action.payload.forEach(product => {
         newState[product.id] = product
