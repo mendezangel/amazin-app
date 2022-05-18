@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: solid #cccccc 1px;
+  /* border-bottom: solid #cccccc 1px; */
   padding: 18px;
 }
 
@@ -250,4 +250,10 @@
 
 .product-details-buy-container .return-policy-text span:hover {
   color: #C7511F;
+}
+
+.reviews-under-product-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
