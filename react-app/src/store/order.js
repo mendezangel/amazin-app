@@ -44,8 +44,8 @@ export const deleteOrder = (id) => async (dispatch) => {
   });
 
   if (res.ok) {
-    const order = res.json()
-    dispatch(deleteOrderAction(order));
+    const { id } = res.json()
+    dispatch(deleteOrderAction(id));
   }
 }
 
@@ -99,10 +99,10 @@ const OrderReducer = (state = initialState, action) => {
 
     case DELETE:
       newState = { ...state, orders: [...state.orders] }
-      delete newState[action.payload.id];
+      delete newState[action.payload];
       for (let i = 0; i < newState.orders.length; i++) {
         const order = newState.orders[i];
-        if (order.id === action.payload.id) newState.orders.splice(i, 1)
+        if (order.id === action.payload) newState.orders.splice(i, 1)
       }
       return newState;
 

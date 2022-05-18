@@ -26,9 +26,14 @@ export default function HomePage() {
       return setRandProducts(array.slice(0, 8));
     }
     shuffle(products)
-    dispatch(loadOrders(user?.id))
     setLoaded(true)
   }, [])
+
+  useEffect(() => {
+    (async () => {
+      if (user) await dispatch(loadOrders(user.id));
+    })()
+  }, [user])
 
   if (!loaded) return null;
 

@@ -60,7 +60,7 @@ def delete_order(id):
   order = Order.query.get(id)
   db.session.delete(order)
   db.session.commit()
-  return order.to_dict()
+  return {'id': id}
 
 @order_routes.route('/update', methods=['PATCH'])
 @login_required
