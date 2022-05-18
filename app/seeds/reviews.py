@@ -7,7 +7,8 @@ def seed_reviews():
     review = Review(
       owner_id=fake.random_int(min=1, max=30),
       product_id=fake.random_int(min=1, max=100),
-      description=fake.parargaph(nb_sentences=15),
+      headline=fake.paragraph(nb_sentences=1),
+      description=fake.paragraph(nb_sentences=15),
       rating=fake.random_int(min=1, max=5)
     )
     db.session.add(review)
