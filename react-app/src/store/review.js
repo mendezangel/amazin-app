@@ -4,11 +4,11 @@ const loadReviewsAction = payload => {
   return { type: LOAD, payload }
 }
 
-export const loadProductReviews = () => async (dispatch) => {
-  const res = await fetch('/api/products/reviews')
+export const loadProductReviews = (id) => async (dispatch) => {
+  const res = await fetch(`/api/products/reviews/${id}`)
   if (res.ok) {
-    const { products } = await res.json()
-    dispatch(loadReviewsAction(products))
+    const { reviews } = await res.json()
+    dispatch(loadReviewsAction(reviews))
   }
 }
 
@@ -19,8 +19,8 @@ const ReviewReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case LOAD:
-      newState = { ...state };
-      newState.reviews = [...state.reviews]
+      newState = {};
+      // newState.reviews = [...state.reviews]
       newState.reviews = [...action.payload]
 
       action.payload.forEach(review => {

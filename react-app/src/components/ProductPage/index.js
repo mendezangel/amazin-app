@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import './ProductPage.css'
+import { loadProductReviews } from '../../store/review'
 
 export default function ProductPage() {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const history = useHistory()
   const { id } = useParams()
   // const user = useSelector(state => state.session.user)
   const product = useSelector(state => state.product[id])
+  const reviews = useSelector(state => state.review.reviews)
 
   const [quantity, setQuantity] = useState('1')
   const [freeDelivery, setFreeDelivery] = useState('')
@@ -35,6 +37,7 @@ export default function ProductPage() {
   }
 
   useEffect(() => {
+    dispatch(loadProductReviews(id))
     const date = new Date()
     const date1 = new Date()
     const today = new Date()
@@ -59,8 +62,9 @@ export default function ProductPage() {
       setSelectDisabled(true)
     }
 
+
     setLoaded(true)
-  })
+  }, [])
 
   if (!loaded) return null;
 
