@@ -17,8 +17,12 @@
   margin: 0;
 }
 
+.reviews-section-child1 .overall-rating-stars {
+  margin: 10px 0;
+}
+
 .reviews-section-child1 .global-review-count {
-  margin: 20px 0;
+  margin: 0 0 10px 0;
   font-size: 14px;
   color: #565959;
 }
@@ -93,4 +97,19 @@
   font-size: 14px;
   line-height: 20px;
   max-width: 70%;
+}
+
+.stars-headline-container {
+  display: flex;
+  margin-top: 6px;
+}
+
+.stars-headline-container p {
+  margin: 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.review-stars9237 {
+  width: fit-content;
 }

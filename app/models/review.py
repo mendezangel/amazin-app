@@ -21,6 +21,7 @@ class Review(db.Model):
       'id': self.id,
       'owner_id': self.owner_id,
       'product_id': self.product_id,
+      'headline': self.headline,
       'description': self.description,
       'rating': self.rating,
       'created_at': self.created_at,
