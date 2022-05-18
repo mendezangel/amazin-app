@@ -58,7 +58,7 @@ export default function ProductPage() {
     const returnableArr = date2.toDateString().split(' ')
     setReturnable(`Returnable until ${returnableArr[1]} ${returnableArr[2]}, ${returnableArr[3]}`);
 
-    if (product.stock === 0) {
+    if (product?.stock === 0) {
       setInStock(false)
       setSelectDisabled(true)
     }
@@ -93,7 +93,7 @@ export default function ProductPage() {
             </div>
             <div className='product-details-child3'>
               <h4>About this item</h4>
-              <p>{product.description}</p>
+              <p>{product?.description}</p>
             </div>
           </div>
           <div className='product-details-buy-container'>

@@ -1,11 +1,27 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 import './ReviewsUnderProduct.css'
 
 export default function ReviewsUnderProduct({ reviews }) {
+  const history = useHistory()
+  const { id } = useParams()
+  const user = useSelector(state => state.session.user)
 
   const dateString = (date) => {
     const arr = date.split(' ');
     return `${arr[1]} ${arr[2]}, ${arr[3]}`;
+  }
+
+  const reviewLink = (e) => {
+    e.preventDefault()
+
+    if (!user) history.push('/login')
+
+    history.push({
+      pathname: `/products/create-review`,
+      state: id
+    })
   }
 
   return (
@@ -16,7 +32,7 @@ export default function ReviewsUnderProduct({ reviews }) {
         <div className='review-this-product'>
           <h3>Review this product</h3>
           <p>Share your thoughts with other customers</p>
-          <button>Write a customer review</button>
+          <button onClick={reviewLink}>Write a customer review</button>
         </div>
       </div>
       <div className='reviews-section-child2'>

@@ -48,6 +48,17 @@
   text-align: center;
 }
 
+.reviews-section-child1 .review-this-product button:hover {
+  cursor: pointer;
+  background-color: #F7FAFA;
+  border-color: #D5D9D9;
+}
+
+.reviews-section-child1 .review-this-product button:focus {
+  background: #EDFDFF;
+  border-color: #008296;
+}
+
 .review-container89023 {
   border-bottom: solid #cccccc 1px;
   margin-bottom: 15px;
