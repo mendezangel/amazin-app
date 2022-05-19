@@ -24,3 +24,10 @@ def new_review():
     return review.to_dict()
   
   return {'errors': form.errors}, 401
+
+@review_routes.route('/delete/<int:id>', methods=['DELETE'])
+def delete_review(id):
+  review = Review.query.get(id)
+  db.session.delete(review)
+  db.session.commit()
+  return {'id': id}

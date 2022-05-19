@@ -68,7 +68,6 @@ export default function OrderCard({ order }) {
               open={open}
               closeOnDocumentClick
               onClose={closeModal}
-              // trigger={<div className='update-delivery-instructions'>Update Delivery Instructions</div>}
               modal
             >
               <div className='update-instructions-modal-container'>

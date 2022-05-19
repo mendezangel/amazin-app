@@ -61,6 +61,16 @@ const ReviewReducer = (state = initialState, action) => {
       })
       return newState;
 
+    case DELETE:
+      newState = { ...state }
+      newState.reviews = [...state.reviews]
+      delete newState[action.payload]
+      for (let i = 0; i < newState.reviews.length; i++) {
+        const review = newState.reviews[i];
+        if (review.id === action.payload) newState.reviews.splice(i, 1)
+      }
+      return newState;
+
     default:
       return state;
   }
