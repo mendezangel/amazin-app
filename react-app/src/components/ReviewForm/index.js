@@ -1,24 +1,40 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { useLocation } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory, useLocation } from 'react-router-dom'
 import ReactStars from 'react-stars'
+import { createReview } from '../../store/review'
 import './ReviewForm.css'
 
 export default function ReviewForm() {
   const { state: id } = useLocation()
+  const dispatch = useDispatch()
+  const history = useHistory()
 
   const product = useSelector(state => state.product[id])
+  const user = useSelector(state => state.session.user)
 
   const [headline, setHeadline] = useState('')
   const [description, setDescription] = useState('')
   const [value, setValue] = useState(0)
+  const [errors, setErrors] = useState([])
 
   const updateHeadline = (e) => setHeadline(e.target.value)
   const updateDescription = (e) => setDescription(e.target.value)
   const updateRating = (num) => setValue(num)
 
-  const onSubmit = () => {
-    return null
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    const data = await dispatch(createReview({
+      owner_id: user.id,
+      product_id: id,
+      headline,
+      description,
+      rating: value
+    }))
+
+    if (data) return setErrors(data);
+
+    return history.push(`/products/${id}`);
   }
 
   return (

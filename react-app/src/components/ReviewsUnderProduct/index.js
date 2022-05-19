@@ -59,9 +59,9 @@ export default function ReviewsUnderProduct({ reviews }) {
       <div className='reviews-section-child2'>
         {reviews.map(review => {
           return (
-            <div className='review-container89023'>
+            <div className='review-container89023' key={review.id}>
               <div className='reviewee-name'>
-                <i class="fas fa-user-circle"></i>
+                <i className="fas fa-user-circle"></i>
                 <p>{review.user.name}</p>
               </div>
               <div className='stars-headline-container'>
