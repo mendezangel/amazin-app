@@ -4,6 +4,7 @@ import ProductCard from '../ProductCard';
 import './HomePage.css';
 import { loadOrders } from '../../store/order';
 import ProductSlider from '../ProductSlider';
+import bedding from '../../images/amazon-echo-buds.jpg'
 
 export default function HomePage() {
   const dispatch = useDispatch()
@@ -40,21 +41,22 @@ export default function HomePage() {
 
   return (
     <div className='whole-page9835'>
-      <div className='product792041'>
-        <div className='home-page-products-container1'>
-          {randProducts.slice(0, 4).map(product => {
-            return (
-              <ProductCard product={product} key={product.id} />
-            )
-          })}
+      <div className='home-page-img'>
+        <img src={bedding} />
+        <div className='content'></div>
+      </div>
+      <div className='home-page-products-container'>
+        <div className='cards-container1'>
+          <ProductCard product={randProducts[0]} />
+          <ProductCard product={randProducts[1]} />
+          <ProductCard product={randProducts[2]} />
+          <ProductCard product={randProducts[3]} />
         </div>
-        <ProductSlider />
-        <div className='home-page-products-container2'>
-          {randProducts.slice(4, 8).map(product => {
-            return (
-              <ProductCard product={product} key={product.id} />
-            )
-          })}
+        <div className='cards-container1'>
+          <ProductCard product={randProducts[4]} />
+          <ProductCard product={randProducts[5]} />
+          <ProductCard product={randProducts[6]} />
+          <ProductCard product={randProducts[7]} />
         </div>
       </div>
     </div>
