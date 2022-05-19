@@ -18,10 +18,8 @@ export const createReview = (data) => async (dispatch) => {
     body: JSON.stringify(data)
   });
 
-  if (res.errors) {
-    const { errors } = res.json()
-    return errors;
-  }
+  const { errors } = await res.json();
+  if (errors) return errors;
 }
 
 export const loadProductReviews = (id) => async (dispatch) => {

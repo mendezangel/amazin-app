@@ -15,7 +15,7 @@ export default function ReviewForm() {
 
   const [headline, setHeadline] = useState('')
   const [description, setDescription] = useState('')
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState(1)
   const [errors, setErrors] = useState([])
 
   const updateHeadline = (e) => setHeadline(e.target.value)
@@ -33,6 +33,8 @@ export default function ReviewForm() {
     }))
 
     if (data) return setErrors(data);
+
+    console.log(errors)
 
     return history.push(`/products/${id}`);
   }
@@ -66,6 +68,11 @@ export default function ReviewForm() {
             value={headline}
             onChange={updateHeadline}
           />
+          {errors?.headline?.map(error => {
+            return (
+              <p className='error' key={error}>{error}</p>
+            )
+          })}
           <label htmlFor='description'><h2>Add a written review</h2></label>
           <textarea
             name='description'
@@ -74,6 +81,11 @@ export default function ReviewForm() {
             value={description}
             onChange={updateDescription}
           />
+          {errors?.description?.map(error => {
+            return (
+              <p className='error' key={error}>{error}</p>
+            )
+          })}
           <div className='create-review-button-container'>
             <button type='submit'>Submit</button>
           </div>

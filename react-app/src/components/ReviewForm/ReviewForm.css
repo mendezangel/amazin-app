@@ -75,7 +75,7 @@
   box-shadow: 0 1px 2px rgb(15 17 17 / 15%);
   outline: 0;
   font-size: 14px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   transition: all .1s linear;
 }
 
@@ -127,4 +127,15 @@
   padding: 0 10px 0 11px;
   font-size: 13px;
   line-height: 29px;
+}
+
+.error {
+  color: red;
+  opacity: .7;
+  font-size: small;
+  margin: 0;
+}
+
+.create-review-form textarea .error {
+  margin-top: 10px;
 }
