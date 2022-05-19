@@ -1,12 +1,28 @@
 const LOAD = 'reviews/load';
 const CREATE = 'reviews/load';
+const DELETE = 'reviews/delete';
 
-const createReviewAction = payload => {
-  return { type: CREATE, payload }
-}
+// const createReviewAction = payload => {
+//   return { type: CREATE, payload }
+// }
 
 const loadReviewsAction = payload => {
   return { type: LOAD, payload }
+}
+
+const deleteReviewAction = payload => {
+  return { type: DELETE, payload }
+}
+
+export const deleteReview = (id) => async (dispatch) => {
+  const res = await fetch(`/api/reviews/delete/${id}`, {
+    method: 'DELETE'
+  });
+
+  if (res.ok) {
+    const { id } = await res.json()
+    dispatch(deleteReviewAction(id))
+  }
 }
 
 export const createReview = (data) => async (dispatch) => {

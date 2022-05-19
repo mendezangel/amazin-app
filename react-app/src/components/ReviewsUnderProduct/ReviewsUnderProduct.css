@@ -124,3 +124,112 @@
 .review-stars9237 {
   width: fit-content;
 }
+
+.review-btn-options297 {
+  margin: 15px 0;
+  width: fit-content;
+}
+
+.review-btn-options297 .edit-review0812 {
+  margin-right: 10px;
+  font-family: inherit;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
+  background: #FFF;
+  border: solid #D5D9D9 1px;
+  text-align: center;
+  line-height: 20px;
+  width: 70px;
+}
+
+.review-btn-options297 .delete-review9027 {
+  font-family: inherit;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
+  background: #FFF;
+  border: solid #D5D9D9 1px;
+  text-align: center;
+  line-height: 20px;
+  width: 70px;
+}
+
+.review-btn-options297 .edit-review0812:hover {
+  cursor: pointer;
+  background-color: #F7FAFA;
+  border-color: #D5D9D9;
+}
+
+.review-btn-options297 .delete-review9027:hover {
+  cursor: pointer;
+  background-color: #F7FAFA;
+  border-color: #D5D9D9;
+}
+
+.delete-confirm-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 500px;
+  min-width: 500px;
+  border: solid #FFAF38 2px;
+  border-left-width: 12px;
+  border-radius: 8px;
+  padding: 14px 18px 18px 18px;
+  margin-bottom: 12px;
+  background-color: #fff;
+  height: 75px;
+}
+
+.delete-confirm-modal .confirm-container82903 {
+  display: flex;
+}
+
+.confirm-container82903 .fas {
+  color: #FFAF38;
+  font-size: 18px;
+}
+
+.confirm-container82903 h2 {
+  margin: 0 10px;
+  font-size: 20px;
+}
+
+.confirm-btns-container9723 {
+  display: flex;
+  justify-content: center;
+}
+
+.confirm-btns-container9723 .cancel-btn27931 {
+  font-family: inherit;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
+  background: #FFF;
+  border: solid #D5D9D9 1px;
+  text-align: center;
+  line-height: 20px;
+  width: 60px;
+  margin-right: 15px;
+}
+
+.confirm-btns-container9723 .cancel-btn27931:hover {
+  cursor: pointer;
+  background-color: #F7FAFA;
+  border-color: #D5D9D9;
+}
+
+.confirm-btns-container9723 .delete-btn81794 {
+  width: fit-content;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
+  border: solid #FCD200 1px;
+  background: #FFD814;
+  cursor: pointer;
+  text-align: center;
+  padding: 0 10px 0 11px;
+  font-size: 13px;
+  line-height: 29px;
+}
+
+.confirm-btns-container9723 .delete-btn81794:hover {
+  background-color: #F7CA00;
+}

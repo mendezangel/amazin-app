@@ -129,6 +129,10 @@
   line-height: 29px;
 }
 
+.create-review-container .create-review-button-container button:hover {
+  background-color: #F7CA00;
+}
+
 .error {
   color: red;
   opacity: .7;

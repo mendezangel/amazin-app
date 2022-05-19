@@ -44,7 +44,7 @@ export const deleteOrder = (id) => async (dispatch) => {
   });
 
   if (res.ok) {
-    const { id } = res.json()
+    const { id } = await res.json()
     dispatch(deleteOrderAction(id));
   }
 }

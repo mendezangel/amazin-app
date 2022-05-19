@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import ReactStars from 'react-stars';
+import Popup from 'reactjs-popup';
 import './ReviewsUnderProduct.css'
 
 export default function ReviewsUnderProduct({ reviews }) {
@@ -10,6 +11,7 @@ export default function ReviewsUnderProduct({ reviews }) {
   const user = useSelector(state => state.session.user)
 
   const [overallRating, setOverallRating] = useState(0)
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     let num = 0;
@@ -20,6 +22,8 @@ export default function ReviewsUnderProduct({ reviews }) {
 
     setOverallRating(Math.round(num / reviews.length))
   })
+
+  const closeModal = () => setOpen(false);
 
   const dateString = (date) => {
     const arr = date.split(' ');
@@ -78,6 +82,29 @@ export default function ReviewsUnderProduct({ reviews }) {
               <p className='review-creation-date'>Reviewed in {review.user.country} {dateString(new Date(review.created_at).toDateString())}</p>
               <p className='verified-purchase'>Verified Purchase</p>
               <p className='review-description2870'>{review.description}</p>
+              {review.owner_id === user.id && (
+                <div className='review-btn-options297'>
+                  <button className='edit-review0812'>Edit</button>
+                  <button className='delete-review9027' onClick={() => setOpen(o => !o)}>Delete</button>
+                  <Popup
+                    open={open}
+                    closeOnDocumentClick
+                    onClose={closeModal}
+                    modal
+                  >
+                    <div className='delete-confirm-modal'>
+                      <div className='confirm-container82903'>
+                        <i className="fas fa-exclamation-triangle"></i>
+                        <h2>Are you sure you want to delete your review?</h2>
+                      </div>
+                      <div className='confirm-btns-container9723'>
+                        <button className='cancel-btn27931' onClick={closeModal}>Nope</button>
+                        <button className='delete-btn81794'>Yes</button>
+                      </div>
+                    </div>
+                  </Popup>
+                </div>
+              )}
             </div>
           )
         })}
