@@ -11,7 +11,8 @@
 .whole-swiper-container {
   background-color: #fff;
   position: relative;
-  width: 100%;
+  width: 98.1%;
+  margin: 0 14px;
 }
 
 .whole-swiper-container h1 {
@@ -20,8 +21,9 @@
 }
 
 .swiper {
-  min-width: 950px;
+  min-width: 900px;
   height: 300px;
+  margin: 0 14px;
 }
 
 .swiper-slide {
@@ -95,7 +97,7 @@
   display: none;
 }
 
-.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
+/* .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
   position: relative;
   top: 506px;
-}
+} */

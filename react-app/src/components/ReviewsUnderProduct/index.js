@@ -35,7 +35,7 @@ export default function ReviewsUnderProduct({ reviews }) {
   const reviewLink = (e) => {
     e.preventDefault()
 
-    if (!user) history.push('/login')
+    if (!user) return history.push('/login');
 
     history.push({
       pathname: `/create-review`,
