@@ -61,7 +61,7 @@ export const createReview = (data) => async (dispatch) => {
 }
 
 export const loadProductReviews = (id) => async (dispatch) => {
-  const res = await fetch(`/api/products/reviews/${id}`)
+  const res = await fetch(`/api/products/reviews/${id}/`)
   if (res.ok) {
     const { reviews } = await res.json()
     dispatch(loadReviewsAction(reviews))

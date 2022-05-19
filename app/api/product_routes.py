@@ -13,7 +13,7 @@ def get_product(id):
   product = Product.query.get(id)
   return {'product': [product.to_dict()]}
 
-@product_routes.route('/reviews/<int:id>')
+@product_routes.route('/reviews/<int:id>/')
 def get_reviews(id):
   reviews = Review.query.filter_by(product_id=id).order_by(Review.id.desc()).all()
   return {'reviews': [review.to_dict() for review in reviews]}
