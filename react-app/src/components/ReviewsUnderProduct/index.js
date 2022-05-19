@@ -32,7 +32,7 @@ export default function ReviewsUnderProduct({ reviews }) {
     if (!user) history.push('/login')
 
     history.push({
-      pathname: `/products/create-review`,
+      pathname: `/create-review`,
       state: id
     })
   }

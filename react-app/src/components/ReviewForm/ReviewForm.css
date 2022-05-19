@@ -1,0 +1,130 @@
+.whole-page-review-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-review-container {
+  display: flex;
+  flex-direction: column;
+  width: 770px;
+  min-width: 770px;
+  margin-top: 80px;
+}
+
+.create-review-container .create-review-h1 {
+  font-size: 26px;
+  margin-bottom: 30px;
+}
+
+.create-review-container .product-details34578 {
+  display: flex;
+  /* border-bottom: solid #cccccc 1px; */
+  padding-bottom: 30px;
+}
+
+.create-review-container .product-details34578 .img-container7923 {
+  width: 62px;
+  height: 62px;
+}
+
+.create-review-container .product-details34578 img {
+  width: 100%;
+  height: 100%;
+}
+
+.create-review-container .product-details34578 p {
+  margin: 0;
+  align-self: center;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+.create-review-container .overall-rating27289 {
+  font-weight: 700;
+  font-size: 21px;
+}
+
+.create-review-container .set-rating-stars2397 {
+  line-height: 2em;
+}
+
+.create-review-container .create-review-form {
+  display: flex;
+  flex-direction: column;
+  /* border-top: solid #cccccc 1px; */
+  margin-top: 25px;
+}
+
+.create-review-form label h2 {
+  font-size: 21px;
+  border-top: solid #cccccc 1px;
+  padding-top: 20px;
+  margin: 10px 0 15px 0;
+}
+
+.create-review-form input {
+  background-color: #fff;
+  font-family: inherit;
+  height: 31px;
+  padding: 0px 5px;
+  border: solid #888C8C 1px;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgb(15 17 17 / 15%);
+  outline: 0;
+  font-size: 14px;
+  margin-bottom: 15px;
+  transition: all .1s linear;
+}
+
+.create-review-form input:focus {
+  background-color: #F7FEFF;
+  border: 1px solid #e77600;
+  box-shadow: 0 0 3px 2px rgba(228, 121, 17, 0.5);
+}
+
+.create-review-form textarea {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 7px 7px;
+  resize: vertical;
+  transition: all .1s linear;
+  border: solid #888C8C 1px;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgb(15 17 17 / 15%);
+  outline: 0;
+  overflow: auto;
+  vertical-align: top;
+  writing-mode: horizontal-tb;
+  overflow-wrap: break-word;
+  height: 100px;
+}
+
+.create-review-form textarea:focus {
+  background-color: #F7FEFF;
+  border: 1px solid #e77600;
+  box-shadow: 0 0 3px 2px rgba(228, 121, 17, 0.5);
+}
+
+.create-review-container .create-review-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 0;
+  border-top: solid #cccccc 1px;
+  padding-top: 15px;
+}
+
+.create-review-container .create-review-button-container button {
+  width: fit-content;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
+  border: solid #FCD200 1px;
+  background: #FFD814;
+  cursor: pointer;
+  text-align: center;
+  padding: 0 10px 0 11px;
+  font-size: 13px;
+  line-height: 29px;
+}
