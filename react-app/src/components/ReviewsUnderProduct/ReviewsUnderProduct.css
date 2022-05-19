@@ -63,6 +63,11 @@
   border-color: #008296;
 }
 
+.reviews-section-child2 {
+  width: 880px;
+  min-width: 400px;
+}
+
 .review-container89023 {
   border-bottom: solid #cccccc 1px;
   margin-bottom: 15px;
