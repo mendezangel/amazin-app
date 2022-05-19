@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ProductCard from '../ProductCard';
 import './HomePage.css';
 import { loadOrders } from '../../store/order';
+import ProductSlider from '../ProductSlider';
 
 export default function HomePage() {
   const dispatch = useDispatch()
@@ -38,20 +39,23 @@ export default function HomePage() {
   if (!loaded) return null;
 
   return (
-    <div className='whole-page-div'>
-      <div className='home-page-products-container1'>
-        {randProducts.slice(0, 4).map(product => {
-          return (
-            <ProductCard product={product} key={product.id} />
-          )
-        })}
-      </div>
-      <div className='home-page-products-container2'>
-        {randProducts.slice(4, 8).map(product => {
-          return (
-            <ProductCard product={product} key={product.id} />
-          )
-        })}
+    <div className='whole-page9835'>
+      <div className='product792041'>
+        <div className='home-page-products-container1'>
+          {randProducts.slice(0, 4).map(product => {
+            return (
+              <ProductCard product={product} key={product.id} />
+            )
+          })}
+        </div>
+        <ProductSlider />
+        <div className='home-page-products-container2'>
+          {randProducts.slice(4, 8).map(product => {
+            return (
+              <ProductCard product={product} key={product.id} />
+            )
+          })}
+        </div>
       </div>
     </div>
   )
