@@ -2,20 +2,20 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useLocation } from 'react-router-dom'
 import ReactStars from 'react-stars'
-import { createReview } from '../../store/review'
-import './ReviewForm.css'
+import { editReview } from '../../store/review'
 
-export default function ReviewForm() {
-  const { state: id } = useLocation()
+export default function EditReviewForm() {
+  const { state } = useLocation()
+  const { id, review } = state;
   const dispatch = useDispatch()
   const history = useHistory()
 
   const product = useSelector(state => state.product[id])
   const user = useSelector(state => state.session.user)
 
-  const [headline, setHeadline] = useState('')
-  const [description, setDescription] = useState('')
-  const [value, setValue] = useState(1)
+  const [headline, setHeadline] = useState(review.headline)
+  const [description, setDescription] = useState(review.description)
+  const [value, setValue] = useState(review.rating)
   const [errors, setErrors] = useState([])
 
   const updateHeadline = (e) => setHeadline(e.target.value)
@@ -24,15 +24,14 @@ export default function ReviewForm() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    const data = await dispatch(createReview({
-      owner_id: user.id,
-      product_id: id,
+    const data = await dispatch(editReview({
+      review_id: review.id,
       headline,
       description,
       rating: value
     }))
 
-    if (data) return setErrors(data);
+    if (data.errors) return setErrors(data.errors);
 
     return history.push(`/products/${id}`);
   }
@@ -40,7 +39,7 @@ export default function ReviewForm() {
   return (
     <div className='whole-page-review-form'>
       <div className='create-review-container'>
-        <h1 className='create-review-h1'>Create Review</h1>
+        <h1 className='create-review-h1'>Edit Review</h1>
         <div className='product-details34578'>
           <div className='img-container7923'>
             <img src={product.image_url} />

@@ -48,6 +48,18 @@ export default function ReviewsUnderProduct({ reviews }) {
     closeModal()
   }
 
+  const onEdit = (review) => {
+    if (!user) return history.push('/login')
+
+    history.push({
+      pathname: '/edit-review',
+      state: {
+        id,
+        review
+      }
+    })
+  }
+
   return (
     <div className='product-reviews-section-container'>
       <div className='reviews-section-child1'>
@@ -91,7 +103,7 @@ export default function ReviewsUnderProduct({ reviews }) {
               <p className='review-description2870'>{review.description}</p>
               {review.owner_id === user?.id && (
                 <div className='review-btn-options297'>
-                  <button className='edit-review0812'>Edit</button>
+                  <button className='edit-review0812' onClick={() => onEdit(review)}>Edit</button>
                   <button className='delete-review9027' onClick={() => setOpen(o => !o)}>Delete</button>
                   <Popup
                     open={open}

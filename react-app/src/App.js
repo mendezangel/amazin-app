@@ -11,6 +11,7 @@ import ProductPage from './components/ProductPage';
 import Cart from './components/Cart';
 import Order from './components/Order';
 import ReviewForm from './components/ReviewForm';
+import EditReviewForm from './components/EditReviewForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,6 +50,10 @@ function App() {
         <Route path='/create-review' exact={true}>
           <NavBar />
           <ReviewForm />
+        </Route>
+        <Route path='/edit-review' exact={true}>
+          <NavBar />
+          <EditReviewForm />
         </Route>
         <Route path='/cart' exact={true}>
           <NavBar />

@@ -1,6 +1,7 @@
 const LOAD = 'reviews/load';
 const CREATE = 'reviews/load';
 const DELETE = 'reviews/delete';
+const UPDATE = 'reviews/update';
 
 // const createReviewAction = payload => {
 //   return { type: CREATE, payload }
@@ -12,6 +13,27 @@ const loadReviewsAction = payload => {
 
 const deleteReviewAction = payload => {
   return { type: DELETE, payload }
+}
+
+// const updateReviewAction = payload => {
+//   return {type: UPDATE, payload}
+// }
+
+export const editReview = (data) => async (dispatch) => {
+  const res = await fetch('/api/reviews/edit/', {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+
+  if (res.ok) {
+    const { review } = await res.json()
+    return dispatch(loadReviewsAction(review))
+  }
+  const resData = await res.json()
+  if (resData.errors) return resData;
 }
 
 export const deleteReview = (id) => async (dispatch) => {

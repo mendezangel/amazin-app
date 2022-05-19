@@ -31,3 +31,19 @@ def delete_review(id):
   db.session.delete(review)
   db.session.commit()
   return {'id': id}
+
+@review_routes.route('/edit/', methods=['PATCH'])
+@login_required
+def edit_review():
+  data = request.json
+  review = Review.query.get(data['review_id'])
+  form = NewReviewForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+    review.headline = data['headline']
+    review.description = data['description']
+    review.rating = data['rating']
+    db.session.commit()
+    return {'review': [review.to_dict()]}
+
+  return {'errors': form.errors}, 401
