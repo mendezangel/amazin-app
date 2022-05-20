@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import './SignupForm.css'
 
 const SignUpForm = () => {
   const history = useHistory();
@@ -18,9 +19,11 @@ const SignUpForm = () => {
     e.preventDefault();
     const data = await dispatch(signUp(name, email, password, repeatPassword));
     if (data) {
-      setErrors(data) //TODO handle validations
+      setErrors(data)
     }
   };
+
+  console.log(errors)
 
   const signinButton = (e) => {
     e.preventDefault();
@@ -48,8 +51,8 @@ const SignUpForm = () => {
   }
 
   return (
-    <div className='20481'>
-      <div className='4014'>
+    <div className='20481 testtest'>
+      <div className='4014 signup-form-wrapper'>
         <div className='login-form-container'>
           <h1>Create account</h1>
           <form onSubmit={onSignUp} className='login-form'>
@@ -61,9 +64,9 @@ const SignUpForm = () => {
                 value={name}
                 onChange={updateName}
               />
-              {/* {errors?.email?.map(error => {
+              {errors?.name?.map(error => {
                 return (<p className="form-error" key={error}>{error}</p>)
-              })} */}
+              })}
             </div>
             <div>
               <label htmlFor='email'>Email</label>
@@ -73,9 +76,9 @@ const SignUpForm = () => {
                 value={email}
                 onChange={updateEmail}
               />
-              {/* {errors?.password?.map(error => {
+              {errors?.email?.map(error => {
                 return (<p className="form-error" key={error}>{error}</p>)
-              })} */}
+              })}
               <div>
                 <label htmlFor='password'>Password</label>
                 <input
@@ -84,6 +87,9 @@ const SignUpForm = () => {
                   value={password}
                   onChange={updatePassword}
                 />
+                {errors?.password?.map(error => {
+                  return (<p className="form-error" key={error}>{error}</p>)
+                })}
               </div>
               <div>
                 <label htmlFor='repeat_password'>Re-enter password</label>
@@ -93,6 +99,9 @@ const SignUpForm = () => {
                   value={repeatPassword}
                   onChange={updateRepeatPassword}
                 />
+                {errors?.repeat_password?.map(error => {
+                  return (<p className="form-error" key={error}>{error}</p>)
+                })}
               </div>
               <button type='submit'>Sign-Up</button>
             </div>

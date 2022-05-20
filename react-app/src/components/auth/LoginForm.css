@@ -83,7 +83,7 @@
 }
 
 [class='27502'] {
-  border-top: solid #e7e7e7 1px;
+  /* border-top: solid #e7e7e7 1px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
