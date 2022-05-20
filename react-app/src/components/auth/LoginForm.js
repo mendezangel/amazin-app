@@ -49,6 +49,9 @@ const LoginForm = () => {
       <div className='4014'>
         <div className='login-form-container'>
           <h1>Sign-In</h1>
+          {errors?.map(error => {
+            return (<p className="form-error" key={error}>{error}</p>)
+          })}
           <form onSubmit={onLogin} className='login-form'>
             <div>
               <label htmlFor='email'>Email</label>
@@ -58,9 +61,9 @@ const LoginForm = () => {
                 value={email}
                 onChange={updateEmail}
               />
-              {errors?.email?.map(error => {
+              {/* {errors?.email?.map(error => {
                 return (<p className="form-error" key={error}>{error}</p>)
-              })}
+              })} */}
             </div>
             <div>
               <label htmlFor='password'>Password</label>
@@ -70,9 +73,9 @@ const LoginForm = () => {
                 value={password}
                 onChange={updatePassword}
               />
-              {errors?.password?.map(error => {
+              {/* {errors?.password?.map(error => {
                 return (<p className="form-error" key={error}>{error}</p>)
-              })}
+              })} */}
               <button type='submit'>Sign-In</button>
               <button onClick={demoUser}>Demo User</button>
             </div>
