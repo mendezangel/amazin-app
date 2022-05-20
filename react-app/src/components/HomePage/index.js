@@ -4,7 +4,7 @@ import ProductCard from '../ProductCard';
 import './HomePage.css';
 import { loadOrders } from '../../store/order';
 import ProductSlider from '../ProductSlider';
-import bedding from '../../images/amazon-echo-buds.jpg'
+import { backgroundImages } from '../../data/product_card_text';
 
 export default function HomePage() {
   const dispatch = useDispatch()
@@ -14,6 +14,10 @@ export default function HomePage() {
   const [loaded, setLoaded] = useState(false);
 
   const [randProducts, setRandProducts] = useState([])
+
+  const backgroundImage = (function () {
+    return Math.floor(Math.random() * (backgroundImages.length - 1) + 1);
+  })()
 
   useEffect(() => {
     function shuffle(array) {
@@ -42,7 +46,7 @@ export default function HomePage() {
   return (
     <div className='whole-page9835'>
       <div className='home-page-img'>
-        <img src={bedding} />
+        <img src={backgroundImages[backgroundImage]} />
         <div className='content'></div>
       </div>
       <div className='home-page-products-container'>
@@ -51,6 +55,9 @@ export default function HomePage() {
           <ProductCard product={randProducts[1]} />
           <ProductCard product={randProducts[2]} />
           <ProductCard product={randProducts[3]} />
+        </div>
+        <div className='home-slider-container'>
+          <ProductSlider />
         </div>
         <div className='cards-container1'>
           <ProductCard product={randProducts[4]} />

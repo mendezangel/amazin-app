@@ -1,3 +1,8 @@
+import bedding from '../images/amazon-bedding.jpg';
+import echoBuds from '../images/amazon-echo-buds.jpg';
+import tp from '../images/amazon-tp.jpg';
+import mouse from '../images/amazon-mouse.jpg';
+
 export const singleItemText = [
   'Deal of the Day',
   'Top Pick',
@@ -22,4 +27,11 @@ export const multipleItemText = [
   "customers' Most-Loved",
   'Must-see deals',
   'Shop most-loved finds'
+]
+
+export const backgroundImages = [
+  bedding,
+  echoBuds,
+  tp,
+  mouse
 ]
