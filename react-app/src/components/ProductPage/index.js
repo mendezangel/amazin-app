@@ -74,7 +74,6 @@ export default function ProductPage() {
   return (
     <>
       <div className='product-page-11940'>
-
         <div className='product-details-wrapper'>
           <div className='product-details-img-container'>
             <img src={`${product.image_url}`} />
@@ -86,7 +85,7 @@ export default function ProductPage() {
             <div className='product-details-child2'>
               <div className='product-card-price-container'>
                 <div className="dollar-sign">$</div>
-                <div className="price-dollar">{product.price}</div>
+                <div className="price-dollar" style={{ color: '#B12704' }}>{product.price}</div>
                 <div className="price-cents-container">
                   <p className='price-cents'>99</p>
                 </div>

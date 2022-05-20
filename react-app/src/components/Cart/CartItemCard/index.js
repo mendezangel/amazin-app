@@ -5,6 +5,12 @@ export default function CartItemCard({ product, deleteItem }) {
 
   const [inStock, setInStock] = useState(true);
   const [productPrice, setProductPrice] = useState(0);
+  const [quantity, setQuantity] = useState(product.quantity)
+
+  const updateQuantity = (e) => {
+    setQuantity(e.target.value)
+    product.quantity = quantity
+  }
 
   if (product.stock === 0) setInStock(false)
 
@@ -25,7 +31,7 @@ export default function CartItemCard({ product, deleteItem }) {
           {!inStock && (<p className='out-of-stock-h3'>Out of Stock.</p>)}
           <div className='free-returns3827'>FREE Returns</div>
           <div className='qty-delete-container'>
-            <p className='item-qty9217'>Qty: {product.quantity}</p>
+            <p className='item-qty9217'>Qty: {quantity}</p>
             <div className='delete-item8723' id={product.id} onClick={deleteItem}>Delete</div>
           </div>
         </div>
