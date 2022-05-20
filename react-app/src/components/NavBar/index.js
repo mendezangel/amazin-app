@@ -82,8 +82,9 @@ const NavBar = () => {
               </div>
             </Popup>
           </div>
-          <div className='nav-bar-orders'>
-            <h3 onClick={ordersButton}>Orders</h3>
+          <div className='nav-bar-user'>
+            <div className='hello-nav-right'>Returns</div>
+            <div className='account-nav-right' onClick={ordersButton}>& Orders</div>
           </div>
           <div className='nav-bar-cart' onClick={cartButton}>
             <ShoppingCartOutlinedIcon fontSize='large' style={{ color: '#fff' }} /><p className='nav-cart-text'>Cart</p>
