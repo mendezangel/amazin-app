@@ -7,7 +7,7 @@ order_routes = Blueprint('orders', __name__)
 @order_routes.route('/')
 @login_required
 def get_orders():
-  orders = Order.query.filter_by(user_id=current_user.id).order_by(Order.id.desc()).all()
+  orders = Order.query.filter_by(user_id=current_user.id).order_by(Order.created_at.desc()).all()
 
   return {'orders': [order.to_dict() for order in orders]}
 
