@@ -257,3 +257,11 @@
   display: flex;
   justify-content: center;
 }
+
+.product-slider-container {
+  margin: 80px 100px 100px 100px;
+}
+
+.product-slider-container h1 {
+  font-size: 24px;
+}

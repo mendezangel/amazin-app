@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import ProductCard from '../ProductCard';
 import './HomePage.css';
 import { loadOrders } from '../../store/order';
+import { clearReviews } from '../../store/review';
 import ProductSlider from '../ProductSlider';
+import { backgroundImages } from '../../data/product_card_text';
+import Footer from '../Footer';
 
 export default function HomePage() {
   const dispatch = useDispatch()
@@ -13,6 +16,10 @@ export default function HomePage() {
   const [loaded, setLoaded] = useState(false);
 
   const [randProducts, setRandProducts] = useState([])
+
+  const backgroundImage = (function () {
+    return Math.floor(Math.random() * (backgroundImages.length - 1) + 1);
+  })()
 
   useEffect(() => {
     function shuffle(array) {
@@ -32,6 +39,7 @@ export default function HomePage() {
 
   useEffect(() => {
     (async () => {
+      await dispatch(clearReviews());
       if (user) await dispatch(loadOrders(user.id));
     })()
   }, [user])
@@ -39,24 +47,33 @@ export default function HomePage() {
   if (!loaded) return null;
 
   return (
-    <div className='whole-page9835'>
-      <div className='product792041'>
-        <div className='home-page-products-container1'>
-          {randProducts.slice(0, 4).map(product => {
-            return (
-              <ProductCard product={product} key={product.id} />
-            )
-          })}
+    <>
+      <div className='whole-page9835'>
+        <div className='home-page-img'>
+          <img src={backgroundImages[backgroundImage]} />
+          <div className='content'></div>
         </div>
-        <ProductSlider />
-        <div className='home-page-products-container2'>
-          {randProducts.slice(4, 8).map(product => {
-            return (
-              <ProductCard product={product} key={product.id} />
-            )
-          })}
+        <div className='home-page-products-container'>
+          <div className='cards-container1'>
+            <ProductCard product={randProducts[0]} />
+            <ProductCard product={randProducts[1]} />
+            <ProductCard product={randProducts[2]} />
+            <ProductCard product={randProducts[3]} />
+          </div>
+          <div className='home-slider-container'>
+            <ProductSlider />
+          </div>
+          <div className='cards-container1'>
+            <ProductCard product={randProducts[4]} />
+            <ProductCard product={randProducts[5]} />
+            <ProductCard product={randProducts[6]} />
+            <ProductCard product={randProducts[7]} />
+          </div>
         </div>
       </div>
-    </div>
+      <footer>
+        <Footer />
+      </footer>
+    </>
   )
 }

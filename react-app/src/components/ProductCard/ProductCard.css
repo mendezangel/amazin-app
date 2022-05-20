@@ -1,6 +1,7 @@
 .product-card-container {
   width: 307px;
   background-color: #fff;
+  border-radius: 3px;
   padding: 20px;
   margin: 14px;
   height: fit-content;

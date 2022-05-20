@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import ReviewsUnderProduct from '../ReviewsUnderProduct'
+import ProductSlider from '../ProductSlider';
 import './ProductPage.css'
 import { loadProductReviews } from '../../store/review'
+import Footer from '../Footer';
 
 export default function ProductPage() {
   const dispatch = useDispatch()
@@ -136,9 +138,15 @@ export default function ProductPage() {
           </div>
         </div>
       </div>
+      <div className='product-slider-container'>
+        <ProductSlider />
+      </div>
       <div className='reviews-under-product-container'>
         <ReviewsUnderProduct reviews={reviews} />
       </div>
+      <footer>
+        <Footer />
+      </footer>
     </>
   )
 }

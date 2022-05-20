@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { authenticate } from './store/session';
 import { getAllProducts } from './store/product';
@@ -12,10 +12,12 @@ import Cart from './components/Cart';
 import Order from './components/Order';
 import ReviewForm from './components/ReviewForm';
 import EditReviewForm from './components/EditReviewForm';
+import Footer from './components/Footer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  // const location = useLocation();
 
   useEffect(() => {
     (async () => {
@@ -64,6 +66,9 @@ function App() {
           <Order />
         </Route>
       </Switch>
+      {/* <footer>
+        {location.pathname == '/login' || location.pathname == '/signup' ? null : <Footer />}
+      </footer> */}
     </BrowserRouter>
   );
 }

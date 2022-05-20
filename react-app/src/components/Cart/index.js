@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import './Cart.css';
 import CartItemCard from './CartItemCard';
 import { createOrder } from '../../store/order';
+import Footer from '../Footer';
 
 export default function Cart() {
   const user = useSelector(state => state.session.user)
@@ -106,6 +107,9 @@ export default function Cart() {
 
         </div>
       </div>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   )
 }
