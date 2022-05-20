@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
-import './SignupForm.css'
 
 const SignUpForm = () => {
   const history = useHistory();
@@ -51,8 +50,8 @@ const SignUpForm = () => {
   }
 
   return (
-    <div className='20481 testtest'>
-      <div className='4014 signup-form-wrapper'>
+    <div className='20481'>
+      <div className='4014'>
         <div className='login-form-container'>
           <h1>Create account</h1>
           <form onSubmit={onSignUp} className='login-form'>
