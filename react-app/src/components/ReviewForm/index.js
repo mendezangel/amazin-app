@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useLocation } from 'react-router-dom'
 import ReactStars from 'react-stars'
 import { createReview } from '../../store/review'
+import Footer from '../Footer';
 import './ReviewForm.css'
 
 export default function ReviewForm() {
@@ -38,57 +39,62 @@ export default function ReviewForm() {
   }
 
   return (
-    <div className='whole-page-review-form'>
-      <div className='create-review-container'>
-        <h1 className='create-review-h1'>Create Review</h1>
-        <div className='product-details34578'>
-          <div className='img-container7923'>
-            <img src={product.image_url} />
+    <div>
+      <div className='whole-page-review-form'>
+        <div className='create-review-container'>
+          <h1 className='create-review-h1'>Create Review</h1>
+          <div className='product-details34578'>
+            <div className='img-container7923'>
+              <img src={product.image_url} />
+            </div>
+            <p>{product.name}</p>
           </div>
-          <p>{product.name}</p>
+          <h2 className='overall-rating27289'>Overall rating</h2>
+          <ReactStars
+            className='set-rating-stars2397'
+            count={5}
+            value={value}
+            color2={'#FFA41C'}
+            half={false}
+            size={50}
+            onChange={updateRating}
+          />
+          <form onSubmit={onSubmit} className='create-review-form'>
+            <label htmlFor='headline'><h2>Add a headline</h2></label>
+            <input
+              name='headline'
+              type='text'
+              placeholder="What's most important to know?"
+              value={headline}
+              onChange={updateHeadline}
+            />
+            {errors?.headline?.map(error => {
+              return (
+                <p className='error' key={error}>{error}</p>
+              )
+            })}
+            <label htmlFor='description'><h2>Add a written review</h2></label>
+            <textarea
+              name='description'
+              type='text'
+              placeholder='What did you like or dislike? What did you use this product for?'
+              value={description}
+              onChange={updateDescription}
+            />
+            {errors?.description?.map(error => {
+              return (
+                <p className='error' key={error}>{error}</p>
+              )
+            })}
+            <div className='create-review-button-container'>
+              <button type='submit'>Submit</button>
+            </div>
+          </form>
         </div>
-        <h2 className='overall-rating27289'>Overall rating</h2>
-        <ReactStars
-          className='set-rating-stars2397'
-          count={5}
-          value={value}
-          color2={'#FFA41C'}
-          half={false}
-          size={50}
-          onChange={updateRating}
-        />
-        <form onSubmit={onSubmit} className='create-review-form'>
-          <label htmlFor='headline'><h2>Add a headline</h2></label>
-          <input
-            name='headline'
-            type='text'
-            placeholder="What's most important to know?"
-            value={headline}
-            onChange={updateHeadline}
-          />
-          {errors?.headline?.map(error => {
-            return (
-              <p className='error' key={error}>{error}</p>
-            )
-          })}
-          <label htmlFor='description'><h2>Add a written review</h2></label>
-          <textarea
-            name='description'
-            type='text'
-            placeholder='What did you like or dislike? What did you use this product for?'
-            value={description}
-            onChange={updateDescription}
-          />
-          {errors?.description?.map(error => {
-            return (
-              <p className='error' key={error}>{error}</p>
-            )
-          })}
-          <div className='create-review-button-container'>
-            <button type='submit'>Submit</button>
-          </div>
-        </form>
       </div>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   )
 }

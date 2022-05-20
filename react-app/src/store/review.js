@@ -1,7 +1,8 @@
 const LOAD = 'reviews/load';
-const CREATE = 'reviews/load';
+// const CREATE = 'reviews/load';
 const DELETE = 'reviews/delete';
-const UPDATE = 'reviews/update';
+// const UPDATE = 'reviews/update';
+const CLEAR = 'reviews/clear';
 
 // const createReviewAction = payload => {
 //   return { type: CREATE, payload }
@@ -15,9 +16,17 @@ const deleteReviewAction = payload => {
   return { type: DELETE, payload }
 }
 
+const clearReviewsAction = payload => {
+  return { type: CLEAR, payload }
+}
+
 // const updateReviewAction = payload => {
 //   return {type: UPDATE, payload}
 // }
+
+export const clearReviews = () => async (dispatch) => {
+  dispatch(clearReviewsAction())
+}
 
 export const editReview = (data) => async (dispatch) => {
   const res = await fetch('/api/reviews/edit/', {
@@ -92,6 +101,11 @@ const ReviewReducer = (state = initialState, action) => {
         if (review.id === action.payload) newState.reviews.splice(i, 1)
       }
       return newState;
+
+    case CLEAR:
+      newState = {}
+      newState.reviews = []
+      return newState
 
     default:
       return state;

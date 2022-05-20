@@ -48,23 +48,23 @@ export default function ProductSlider() {
         breakpoints={{
           640: {
             slidesPerView: 2,
-            spaceBetween: 20
+            spaceBetween: 10
           },
           720: {
             slidesPerView: 3,
-            spaceBetween: 30
+            spaceBetween: 20
           },
           920: {
             slidesPerView: 4,
-            spaceBetween: 40
+            spaceBetween: 30
           },
           1100: {
             slidesPerView: 5,
-            spaceBetween: 50
+            spaceBetween: 40
           },
           1500: {
             slidesPerView: 6,
-            spaceBetween: 60
+            spaceBetween: 50
           }
         }}
         // navigation={true}

@@ -1,7 +1,13 @@
+html,
+body {
+  height: 100%;
+}
+
 .whole-page-div {
   height: 100%;
   width: 100vw;
   background-color: #EAEDED;
+  overflow-y: scroll;
 }
 
 .cart-container9271 {
