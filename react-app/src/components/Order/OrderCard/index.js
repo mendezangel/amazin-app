@@ -15,10 +15,12 @@ export default function OrderCard({ order }) {
   const [deliveryDate, setDeliveryDate] = useState('')
   const [textArea, setTextArea] = useState(order.delivery_instructions)
   const [open, setOpen] = useState(false);
+  const [open1, setOpen1] = useState(false);
   const [loaded, setLoaded] = useState(false)
 
   const orderPlaced = order.created_at.split(' ')
   const closeModal = () => setOpen(false)
+  const closeModal1 = () => setOpen1(false)
 
   useEffect(() => {
     setDeliveryDate(new Date(new Date(order.created_at).setDate(new Date(order.created_at).getDate() + 2)))
@@ -104,7 +106,26 @@ export default function OrderCard({ order }) {
           })}
         </div>
       </div>
-      <div className='order-card-child3'><p onClick={handleDelete} id={order.id}>Delete archive</p></div>
+      <div className='order-card-child3'><p onClick={() => setOpen1(o => !o)} id={order.id}>
+        {order.created_at && deliveryDate < new Date() ? 'Delete archive' : 'Cancel order'}
+      </p></div>
+      <Popup
+        open={open1}
+        closeOnDocumentClick={false}
+        onClose={closeModal1}
+        modal
+      >
+        <div className='delete-confirm-modal'>
+          <div className='confirm-container82903'>
+            <i className="fas fa-exclamation-triangle"></i>
+            <h2>{order.created_at && deliveryDate < new Date() ? 'Are you sure you want to delete this archive?' : 'Are you sure you want to cancel your order?'}</h2>
+          </div>
+          <div className='confirm-btns-container9723'>
+            <button className='cancel-btn27931' onClick={closeModal1}>Nope</button>
+            <button className='delete-btn81794' id={order.id} onClick={handleDelete}>Yes</button>
+          </div>
+        </div>
+      </Popup>
     </div>
   )
 }
