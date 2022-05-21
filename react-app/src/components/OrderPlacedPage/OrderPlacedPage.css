@@ -1,0 +1,50 @@
+.order-placed-whole-page {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.order-placed-container {
+  border: solid #007600 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  padding: 15px;
+  border-radius: 8px;
+  min-width: 550px;
+}
+
+.order-placed-container .checkmark-and-confirmation {
+  display: flex;
+  margin: 10px 0;
+}
+
+.checkmark-and-confirmation h1 {
+  margin: 8px 0 0 0;
+  color: #007600;
+}
+
+.order-placed-container .fas {
+  color: #007600;
+  margin-right: 15px;
+  font-weight: 900;
+  font-size: 34px;
+}
+
+.order-placed-container p {
+  font-size: 14px;
+}
+
+.order-placed-container a {
+  color: #007185;
+  text-decoration: none;
+}
+
+.order-placed-container a:hover {
+  text-decoration: underline;
+  color: #C7511F;
+}

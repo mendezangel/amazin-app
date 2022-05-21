@@ -66,7 +66,7 @@ export default function Cart() {
     }
 
     localStorage.clear()
-    return history.push('/');
+    return history.push('/order-placed');
   }
 
   if (!isLoaded) return null;
