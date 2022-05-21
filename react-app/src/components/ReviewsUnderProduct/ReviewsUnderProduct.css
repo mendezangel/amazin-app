@@ -222,6 +222,10 @@
   border-color: #D5D9D9;
 }
 
+.confirm-btns-container9723 .cancel-btn27931:focus {
+  outline: none;
+}
+
 .confirm-btns-container9723 .delete-btn81794 {
   width: fit-content;
   border-radius: 8px;

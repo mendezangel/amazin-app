@@ -96,3 +96,20 @@ body {
   border-color: #F2C200;
   box-shadow: 0 2px 5px 0 rgba(213, 217, 217, .5);
 }
+
+.empty-cart-div {
+  height: 60vh;
+}
+
+.empty-cart-div a {
+  text-decoration: none;
+  color: #007185;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.empty-cart-div a:hover {
+  text-decoration: underline;
+  color: #C7511F;
+}

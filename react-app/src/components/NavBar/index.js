@@ -11,22 +11,29 @@ const NavBar = () => {
   const user = useSelector(state => state.session.user)
   const history = useHistory()
 
-  const helloUser = () => {
-    if (!user) {
-      return (
-        <h3 className='nav-bar-user-p'>Hello, Sign in</h3>
-      )
-    }
-    return (
-      <h3 className='nav-bar-user-p'>Hello, {user.name.split(' ')[0]}</h3>
-    )
-  }
-
   const cartButton = () => history.push('/cart')
 
   const ordersButton = () => {
     if (!user) return history.push('/login')
     history.push('/orders')
+  }
+
+  const test = () => {
+    return (
+      user ?
+        <div>
+          <div className='hello-nav-right'>
+            Hello, {user.name.split(' ')[0]}
+          </div>
+          <div className='account-nav-right'>Account</div>
+        </div> :
+        <div>
+          <div className='hello-nav-right'>
+            Hello, sign in
+          </div>
+          <div className='account-nav-right'>Account</div>
+        </div>
+    )
   }
 
   // if (!user) return null;
@@ -57,11 +64,12 @@ const NavBar = () => {
           </div>
         </div>
         <div className='nav-bar-right-container'>
-          <div className='nav-bar-user'>
+          <div className='nav-bar-user' onClick={() => !user ? history.push('/login') : null}>
             <Popup
-              trigger={helloUser}
+              trigger={test}
               position='bottom right'
-              offsetY={7}
+              offsetY={8}
+              offsetX={50}
               on='hover'
               closeOnDocumentClick
               mouseLeaveDelay={200}
@@ -74,8 +82,9 @@ const NavBar = () => {
               </div>
             </Popup>
           </div>
-          <div className='nav-bar-orders'>
-            <h3 onClick={ordersButton}>Orders</h3>
+          <div className='nav-bar-user'>
+            <div className='hello-nav-right'>Returns</div>
+            <div className='account-nav-right' onClick={ordersButton}>& Orders</div>
           </div>
           <div className='nav-bar-cart' onClick={cartButton}>
             <ShoppingCartOutlinedIcon fontSize='large' style={{ color: '#fff' }} /><p className='nav-cart-text'>Cart</p>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import './Cart.css';
 import CartItemCard from './CartItemCard';
 import { createOrder } from '../../store/order';
@@ -66,7 +66,7 @@ export default function Cart() {
     }
 
     localStorage.clear()
-    return history.push('/');
+    return history.push('/order-placed');
   }
 
   if (!isLoaded) return null;
@@ -76,18 +76,28 @@ export default function Cart() {
       <div className='cart-container9271'>
         <div className='cart-items-container'>
           <h1>Shopping Cart</h1>
-          {cartItems.map(product => {
-            return (
-              <CartItemCard product={product} deleteItem={deleteItem} key={product.id} />
-            )
-          })}
-          <div className='cart-subtotal2893'>
-            {cartItems.length > 1 && (<h3>Subtotal ({cartItems.length} items): <span className='subtotal-span7058'>${subTotal}</span></h3>)}
-            {cartItems.length === 1 && (<h3>Subtotal (1 item): <span className='subtotal-span7058'>${subTotal}</span></h3>)}
-          </div>
-        </div>
-        <div className='cart-total-container'>
           {cartItems.length >= 1 && (
+            <>
+              {cartItems.map(product => {
+                return (
+                  <CartItemCard product={product} deleteItem={deleteItem} key={product.id} />
+                )
+              })}
+              <div className='cart-subtotal2893'>
+                {cartItems.length > 1 && (<h3>Subtotal ({cartItems.length} items): <span className='subtotal-span7058'>${subTotal}</span></h3>)}
+                {cartItems.length === 1 && (<h3>Subtotal (1 item): <span className='subtotal-span7058'>${subTotal}</span></h3>)}
+              </div>
+            </>
+          )}
+          {cartItems.length <= 0 && (
+            <div className='empty-cart-div'>
+              <h2>Your shopping cart is empty.</h2>
+              <Link to={'/'}>Start shopping</Link>
+            </div>
+          )}
+        </div>
+        {cartItems.length >= 1 && (
+          <div className='cart-total-container'>
             <>
               <div className='cart-subtotal9281'>
                 {cartItems.length > 1 && (<h3>Subtotal ({cartItems.length} items): <span className='subtotal-span7058'>${subTotal}</span></h3>)}
@@ -103,9 +113,8 @@ export default function Cart() {
               />
               <div className='checkout-cart6789' onClick={onCheckout}>Proceed to checkout</div>
             </>
-          )}
-
-        </div>
+          </div>
+        )}
       </div>
       <footer>
         <Footer />

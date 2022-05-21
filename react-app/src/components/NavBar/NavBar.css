@@ -58,7 +58,7 @@ i {
 
 .menu-item {
   padding: 5px;
-  height: 28px;
+  height: 30px;
   /* border-bottom: 1px solid rgb(187, 187, 187); */
   display: flex;
   justify-content: center;
@@ -83,6 +83,10 @@ i {
   background: linear-gradient(to bottom, #f5d78e, #eeb933);
 }
 
+.menu-item button:focus {
+  outline: none;
+}
+
 .menu-signin-container {
   margin: 8px;
 }
@@ -105,6 +109,10 @@ i {
   background: linear-gradient(to bottom, #f5d78e, #eeb933);
 }
 
+.menu-signin-container button:focus {
+  outline: none;
+}
+
 .menu-signin-container a {
   color: #05a;
   text-decoration: none;
@@ -122,33 +130,33 @@ i {
 
 .nav-bar-user {
   display: flex;
+  flex-direction: column;
   align-self: flex-end;
   padding-bottom: 2px;
+  padding: 5px;
 }
 
-.nav-bar-user-p {
-  margin: 0;
-  font-size: 14px;
-}
-
-.nav-bar-user-p:hover {
+.nav-bar-user:hover {
   cursor: pointer;
+  /* border: solid white 1px; */
 }
 
-.nav-bar-orders {
-  display: flex;
-  align-self: flex-end;
-  padding-bottom: 2px;
+.hello-nav-right {
+  font-size: 12px;
+  color: #FFFFFF;
+  margin-bottom: 3px;
 }
 
-.nav-bar-orders h3 {
+.account-nav-right {
+  /* align-self: center; */
+  color: #fff;
   font-size: 14px;
-  cursor: pointer;
-  transition: all 0.1s linear;
+  font-weight: 700;
+  line-height: 0.8em;
 }
 
-.nav-bar-orders h3:hover {
-  opacity: 0.8;
+.account-nav-right:hover {
+  cursor: pointer;
 }
 
 .nav-bar-address-container {
@@ -199,6 +207,7 @@ i {
   align-self: flex-end;
   margin: 0;
   color: #fff;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 14px;
+  line-height: 0.8em;
 }

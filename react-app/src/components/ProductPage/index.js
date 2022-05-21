@@ -5,6 +5,7 @@ import ReviewsUnderProduct from '../ReviewsUnderProduct'
 import ProductSlider from '../ProductSlider';
 import './ProductPage.css'
 import { loadProductReviews } from '../../store/review'
+import Popup from 'reactjs-popup';
 import Footer from '../Footer';
 
 export default function ProductPage() {
@@ -74,7 +75,6 @@ export default function ProductPage() {
   return (
     <>
       <div className='product-page-11940'>
-
         <div className='product-details-wrapper'>
           <div className='product-details-img-container'>
             <img src={`${product.image_url}`} />
@@ -86,11 +86,25 @@ export default function ProductPage() {
             <div className='product-details-child2'>
               <div className='product-card-price-container'>
                 <div className="dollar-sign">$</div>
-                <div className="price-dollar">{product.price}</div>
+                <div className="price-dollar" style={{ color: '#B12704' }}>{product.price}</div>
                 <div className="price-cents-container">
                   <p className='price-cents'>99</p>
                 </div>
-                <p className='free-returns-p'>& <span className='free-returns'>FREE Returns</span></p>
+                <Popup
+                  trigger={<p className='free-returns-p'>& <span className='free-returns'>FREE Returns</span></p>}
+                  arrow={true}
+                  arrowStyle={{
+                    color: '#cccccc'
+                  }}
+                  closeOnDocumentClick={true}
+                >
+                  <div className='free-return-container'>
+                    {/* <i class="fa-solid fa-xmark"></i> */}
+                    <p className='free-returns-p1'>Return this item for free</p>
+                    <p className='free-returns-p2'>Free returns are available for the shipping address you chose. You can return the item for any reason on new and unused condition: no shipping charges</p>
+                    <p className='free-returns-p3'>*Disclaimer: This modal and information is here purely for aesthetic reasons.</p>
+                  </div>
+                </Popup>
               </div>
             </div>
             <div className='product-details-child3'>
@@ -100,7 +114,23 @@ export default function ProductPage() {
           </div>
           <div className='product-details-buy-container'>
             <p className='price21549'>${product.price}.99</p>
-            <p className='free-returns-p'>& <span className='free-returns'>FREE Returns</span></p>
+            <Popup
+              trigger={<p className='free-returns-p'>& <span className='free-returns'>FREE Returns</span></p>}
+              arrow={true}
+              arrowStyle={{
+                color: '#cccccc'
+              }}
+              offsetX={-20}
+              closeOnDocumentClick={true}
+            >
+              <div className='free-return-container'>
+                {/* <i class="fa-solid fa-xmark"></i> */}
+                <p className='free-returns-p1'>Return this item for free</p>
+                <p className='free-returns-p2'>Free returns are available for the shipping address you chose. You can return the item for any reason on new and unused condition: no shipping charges</p>
+                <p className='free-returns-p3'>*Disclaimer: This modal and its information is here purely for aesthetic reasons.</p>
+              </div>
+            </Popup>
+
             <p className='free-delivery-p'><span className='FREE-delivery'>FREE delivery</span> {freeDelivery}</p>
             <p className='fastest-delivery-p'>Or fastest delivery <span className='fastest-delivery'>{fastDelivery}. </span>Order within <span className='order-within-text'>{orderWithin}</span></p>
             {/* <p className='order-within-p'></p> */}
@@ -120,10 +150,26 @@ export default function ProductPage() {
             <div onClick={addToCart} className='button-container15631'>
               Add to Cart
             </div>
-            <p className='secure-transaction-p'>
-              <span><i className="fa-solid fa-lock"></i></span>
-              Secure transaction
-            </p>
+            <Popup
+              trigger={<p className='secure-transaction-p'>
+                <span><i className="fa-solid fa-lock"></i></span>
+                Secure transaction
+              </p>}
+              arrow={true}
+              arrowStyle={{
+                color: '#cccccc'
+              }}
+              closeOnDocumentClick={true}
+            >
+              <div className='secure-transaction-container'>
+                <p className='secure-transaction-p1'>
+                  Your transaction is secure
+                </p>
+                <p className='secure-transaction-p2'>We work hard to protect your security and privacy. Our payment security system encrypts your information during transmission. We don't share your credit card details with third-party sellers, and we don't sell your information to others.</p>
+                <p className='secure-transaction-p3'>*Disclaimer: This modal and its information is here purely for aesthetic reasons</p>
+              </div>
+            </Popup>
+
             <div className='ships-from-container'>
               <div className='ships-from-text-container'>Ships from</div>
               <div className='website-text-container'>amazin.com</div>
@@ -133,7 +179,21 @@ export default function ProductPage() {
               <div className='website-text-container'>amazin.com</div>
             </div>
             <p className='return-policy-text'>
-              Return policy: <span>{returnable}</span>
+              Return policy:
+              <Popup
+                trigger={<span> {returnable}</span>}
+                arrow={true}
+                arrowStyle={{
+                  color: '#cccccc'
+                }}
+                closeOnDocumentClick={true}
+              >
+                <div className='return-policy-modal'>
+                  <p className='return-policy-p1'>This item can be returned in its original condition for a full refund or replacement within 30 days of receipt.</p>
+                  <p className='return-policy-p2'>*Disclaimer: This modal and its information is here purely for aesthetic reasons</p>
+                </div>
+              </Popup>
+
             </p>
           </div>
         </div>

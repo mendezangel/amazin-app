@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50%;
+  height: 60%;
 }
 
 [class='4014'] {
@@ -83,7 +83,7 @@
 }
 
 [class='27502'] {
-  border-top: solid #e7e7e7 1px;
+  /* border-top: solid #e7e7e7 1px; */
   display: flex;
   flex-direction: column;
   justify-content: center;

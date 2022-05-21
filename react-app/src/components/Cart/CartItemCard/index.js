@@ -5,6 +5,12 @@ export default function CartItemCard({ product, deleteItem }) {
 
   const [inStock, setInStock] = useState(true);
   const [productPrice, setProductPrice] = useState(0);
+  // const [quantity, setQuantity] = useState(product.quantity)
+
+  // const updateQuantity = (e) => {
+  //   setQuantity(e.target.value)
+  //   product.quantity = quantity
+  // }
 
   if (product.stock === 0) setInStock(false)
 
