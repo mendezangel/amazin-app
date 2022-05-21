@@ -42,6 +42,18 @@ const NavBar = () => {
     )
   }
 
+  const inputOnBlur = () => {
+    const resultsContainer = document.querySelector('.search-results-container');
+    resultsContainer.style.display = 'none';
+  }
+
+  const inputOnFocus = () => {
+    const resultsContainer = document.querySelector('.search-results-container');
+    const body = document.querySelector('body')
+    resultsContainer.style.display = 'block';
+    body.style.background = 'rgba(0, 0, 0, 0.5)'
+  }
+
   // if (!user) return null;
 
   return (
@@ -71,22 +83,22 @@ const NavBar = () => {
         </div>
         <div className='nav-bar-middle-container'>
           <div className='input-and-searchbtn'>
-            <input type='text' onChange={updateSearchTerms} />
+            <input type='text' onChange={updateSearchTerms} value={searchTerms} />
             <div className='magnifying-glass'></div>
           </div>
           {searchTerms && (
             <div className='search-results-container'>
               {products.filter(product => {
-                let count = 0;
-                if (count <= 10 && product.name.toLowerCase().includes(searchTerms.toLowerCase())) {
-                  count++;
+                if (product.name.toLowerCase().includes(searchTerms.toLowerCase())) {
                   return product;
                 }
               }).map(product => {
                 return (
-                  <div className='search-result' key={product.id}>
-                    <p>{product.name}</p>
-                  </div>
+                  <Link to={`/products/${product.id}`} onClick={() => setSearchTerms('')}>
+                    <div className='search-result' key={product.id}>
+                      <p>{product.name}</p>
+                    </div>
+                  </Link>
                 )
               })}
             </div>

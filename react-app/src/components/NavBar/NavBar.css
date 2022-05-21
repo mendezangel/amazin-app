@@ -225,18 +225,41 @@ i {
 .input-and-searchbtn input {
   width: 100%;
   height: 30px;
+  border: none;
+}
+
+.input-and-searchbtn input:focus {
+  outline: none;
 }
 
 .search-results-container {
+  /* display: none; */
   box-sizing: border-box;
   background-color: #fff;
   width: 100%;
   height: 380px;
   overflow: scroll;
   overflow-x: hidden;
-  padding: 10px;
   position: absolute;
-  top: 35px;
+  top: 30px;
   margin: 0 0 0 1px;
   z-index: 2;
+}
+
+.search-results-container a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.search-result {
+  padding: 6px;
+}
+
+.search-result p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.search-result:hover {
+  background: rgba(0, 0, 0, 0.1);
 }
