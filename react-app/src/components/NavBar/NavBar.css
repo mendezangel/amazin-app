@@ -34,6 +34,7 @@ i {
   align-items: center;
   float: none;
   width: 250px;
+  min-width: 250px;
 }
 
 .nav-bar-logo-container {
@@ -210,4 +211,32 @@ i {
   font-weight: 700;
   font-size: 14px;
   line-height: 0.8em;
+}
+
+.nav-bar-middle-container {
+  box-sizing: border-box;
+  width: 50%;
+  position: relative;
+}
+
+/* .input-and-searchbtn {
+} */
+
+.input-and-searchbtn input {
+  width: 100%;
+  height: 30px;
+}
+
+.search-results-container {
+  box-sizing: border-box;
+  background-color: #fff;
+  width: 100%;
+  height: 380px;
+  overflow: scroll;
+  overflow-x: hidden;
+  padding: 10px;
+  position: absolute;
+  top: 35px;
+  margin: 0 0 0 1px;
+  z-index: 2;
 }

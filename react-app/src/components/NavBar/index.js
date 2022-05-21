@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import './NavBar.css'
@@ -10,6 +10,12 @@ import UserDropdownMenu from '../UserDropdownMenu'
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
   const history = useHistory()
+
+  const products = useSelector(state => state.product.products)
+
+  const [searchTerms, setSearchTerms] = useState('')
+
+  const updateSearchTerms = (e) => setSearchTerms(e.target.value);
 
   const cartButton = () => history.push('/cart')
 
@@ -62,6 +68,29 @@ const NavBar = () => {
                 </div></>)}
             </div>
           </div>
+        </div>
+        <div className='nav-bar-middle-container'>
+          <div className='input-and-searchbtn'>
+            <input type='text' onChange={updateSearchTerms} />
+            <div className='magnifying-glass'></div>
+          </div>
+          {searchTerms && (
+            <div className='search-results-container'>
+              {products.filter(product => {
+                let count = 0;
+                if (count <= 10 && product.name.toLowerCase().includes(searchTerms.toLowerCase())) {
+                  count++;
+                  return product;
+                }
+              }).map(product => {
+                return (
+                  <div className='search-result' key={product.id}>
+                    <p>{product.name}</p>
+                  </div>
+                )
+              })}
+            </div>
+          )}
         </div>
         <div className='nav-bar-right-container'>
           <div className='nav-bar-user' onClick={() => !user ? history.push('/login') : null}>
