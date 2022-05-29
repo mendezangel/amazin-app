@@ -99,7 +99,19 @@ export default function ReviewsUnderProduct({ reviews }) {
                 <p>{review.headline}</p>
               </div>
               <p className='review-creation-date'>Reviewed in {review.user.country} {dateString(new Date(review.created_at).toDateString())}</p>
-              <p className='verified-purchase'>Verified Purchase</p>
+              <Popup
+                trigger={<p className='verified-purchase'>Verified Purchase</p>}
+                className='verified-purchase-popup'
+                arrow={true}
+                arrowStyle={{ color: '#cccccc' }}
+                closeOnDocumentClick={true}
+              >
+                <div className='verified-purchase-container'>
+                  <p className='verified-purchase-p1'>Amazon Verified Purchase Reviews</p>
+                  <p className='verified-purchase-p2'>An "Amazon Verified Purchase" review means that we've verified that the person writing the review purchased or used the product on Amazon, and didn't receive the product at a big discount.</p>
+                  <p className='verified-purchase-p3'>*Disclaimer: This modal and it's information is here purely for aesthetic reasons.</p>
+                </div>
+              </Popup>
               <p className='review-description2870'>{review.description}</p>
               {review.owner_id === user?.id && (
                 <div className='review-btn-options297'>

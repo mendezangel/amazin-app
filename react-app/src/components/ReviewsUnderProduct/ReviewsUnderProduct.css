@@ -237,3 +237,29 @@
 .confirm-btns-container9723 .delete-btn81794:hover {
   background-color: #F7CA00;
 }
+
+.verified-purchase-container {
+  width: 250px;
+  background-color: #fff;
+  padding: 20px;
+  border: solid #EAEDED 1px;
+  border-radius: 3px;
+}
+
+.verified-purchase-container p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.verified-purchase-container .verified-purchase-p1 {
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.verified-purchase-container .verified-purchase-p2 {
+  margin-bottom: 12px;
+}
+
+.verified-purchase-container .verified-purchase-p3 {
+  font-size: 11px;
+}
