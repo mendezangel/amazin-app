@@ -66,3 +66,22 @@
 .details-child2-8720 .grand-total-container .grand-total-number {
   align-self: center;
 }
+
+.details-child3-9729 {
+  border: solid #D5D9D9 1px;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-top: 10px;
+}
+
+.details-child3-9729 .products-bts-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.details-child3-9729 .delivery-date-container h2 {
+  margin: 5px 0 0 0;
+  font-size: 20px;
+}
