@@ -85,3 +85,24 @@
   margin: 5px 0 0 0;
   font-size: 20px;
 }
+
+.details-child3-9729 .products-bts-container .buttons-container {
+  height: 30px;
+  width: 200px;
+  font-family: inherit;
+  font-size: 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
+  background: #FFF;
+  border: solid #D5D9D9 1px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-child3-9729 .products-bts-container .buttons-container:hover {
+  cursor: pointer;
+  background-color: #F7FAFA;
+  border-color: #D5D9D9;
+}

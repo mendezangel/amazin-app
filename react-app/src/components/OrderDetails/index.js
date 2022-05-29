@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useLocation, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 import OrderDetailsProduct from './OrderDetailsProduct';
+import { deleteOrder, loadOrders } from '../../store/order';
 import './OrderDetails.css'
 
 export default function OrderDetails() {
+  const dispatch = useDispatch()
+  const history = useHistory()
   const { id } = useParams();
   const { state: order } = useLocation();
   const user = useSelector(state => state.session.user);
@@ -20,6 +23,11 @@ export default function OrderDetails() {
     setProducts(order.products_ordered)
     setLoaded(true)
   }, [])
+
+  const handleDelete = async (e) => {
+    await dispatch(deleteOrder(e.target.id))
+    return history.push('/orders')
+  }
 
   if (!loaded) return null;
 
@@ -62,8 +70,8 @@ export default function OrderDetails() {
               )
             })}
           </div>
-          <div className='buttons-container'>
-            Archive order
+          <div className='buttons-container' id={order.id} onClick={handleDelete}>
+            Delete archive
           </div>
         </div>
       </div>
