@@ -102,7 +102,7 @@ export default function ProductPage() {
                     {/* <i class="fa-solid fa-xmark"></i> */}
                     <p className='free-returns-p1'>Return this item for free</p>
                     <p className='free-returns-p2'>Free returns are available for the shipping address you chose. You can return the item for any reason on new and unused condition: no shipping charges</p>
-                    <p className='free-returns-p3'>*Disclaimer: This modal and information is here purely for aesthetic reasons.</p>
+                    <p className='free-returns-p3'>*Disclaimer: This modal and it's information is here purely for aesthetic reasons.</p>
                   </div>
                 </Popup>
               </div>
