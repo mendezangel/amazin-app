@@ -145,3 +145,18 @@
   text-decoration: underline;
   color: #C7511F;
 }
+
+.order-instructions-container {
+  margin-right: 20px;
+}
+
+.order-instructions-container a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #007185;
+}
+
+.order-instructions-container a:hover {
+  text-decoration: underline;
+  color: #C7511F;
+}

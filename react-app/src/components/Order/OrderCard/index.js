@@ -63,6 +63,9 @@ export default function OrderCard({ order }) {
             <p>{order.user.name}</p>
           </div>
         </div>
+        <div className='order-instructions-container'>
+          <Link to={`/orders/${order.id}`}>View order details</Link>
+        </div>
         {deliveryDate > new Date() && (
           <>
             <div className='update-delivery-instructions' onClick={() => setOpen(o => !o)}>Update Delivery Instructions</div>
