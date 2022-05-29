@@ -1,6 +1,6 @@
-import React, { useEffect, useReducer, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import './OrderCard.css'
 import { deleteOrder } from '../../../store/order';
 import { loadOrders } from '../../../store/order';
@@ -10,6 +10,7 @@ import Popup from 'reactjs-popup';
 export default function OrderCard({ order }) {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
+  const history = useHistory()
 
   const [products, setProducts] = useState([])
   const [deliveryDate, setDeliveryDate] = useState('')
@@ -43,6 +44,14 @@ export default function OrderCard({ order }) {
     setTextArea(order.order[0].delivery_instructions)
   }
 
+  const orderDetailsClick = (e) => {
+    e.preventDefault()
+    return history.push({
+      pathname: `/orders/${order.id}`,
+      state: order
+    })
+  }
+
 
   if (!loaded) return null;
 
@@ -64,7 +73,7 @@ export default function OrderCard({ order }) {
           </div>
         </div>
         <div className='order-instructions-container'>
-          <Link to={`/orders/${order.id}`}>View order details</Link>
+          <Link onClick={orderDetailsClick}>View order details</Link>
         </div>
         {deliveryDate > new Date() && (
           <>
