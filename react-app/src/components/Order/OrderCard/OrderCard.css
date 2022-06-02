@@ -20,7 +20,7 @@
   font-size: 14px;
   margin-right: 12px;
   cursor: pointer;
-  color: #007185
+  color: #007185;
 }
 
 .order-card-child1 .update-delivery-instructions:hover {
@@ -142,6 +142,21 @@
 }
 
 .order-card-child3 p:hover {
+  text-decoration: underline;
+  color: #C7511F;
+}
+
+.order-instructions-container {
+  margin-right: 20px;
+}
+
+.order-instructions-container a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #007185;
+}
+
+.order-instructions-container a:hover {
   text-decoration: underline;
   color: #C7511F;
 }

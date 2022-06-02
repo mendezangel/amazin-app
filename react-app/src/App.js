@@ -13,6 +13,7 @@ import Order from './components/Order';
 import ReviewForm from './components/ReviewForm';
 import EditReviewForm from './components/EditReviewForm';
 import OrderPlacedPage from './components/OrderPlacedPage';
+import OrderDetails from './components/OrderDetails';
 import Footer from './components/Footer';
 
 function App() {
@@ -69,6 +70,11 @@ function App() {
         <Route path='/order-placed' exact={true}>
           <NavBar />
           <OrderPlacedPage />
+          <Footer />
+        </Route>
+        <Route path='/orders/:id' exact={true}>
+          <NavBar />
+          <OrderDetails />
           <Footer />
         </Route>
       </Switch>
