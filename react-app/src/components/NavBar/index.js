@@ -84,7 +84,7 @@ const NavBar = () => {
         <div className='nav-bar-middle-container'>
           <div className='input-and-searchbtn'>
             <input type='text' onChange={updateSearchTerms} value={searchTerms} />
-            <div className='magnifying-glass'></div>
+            {/* <div className='magnifying-glass'></div> */}
           </div>
           {searchTerms && (
             <div className='search-results-container'>

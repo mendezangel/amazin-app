@@ -219,8 +219,9 @@ i {
   position: relative;
 }
 
-/* .input-and-searchbtn {
-} */
+.input-and-searchbtn {
+  overflow: hidden;
+}
 
 .input-and-searchbtn input {
   width: 100%;
