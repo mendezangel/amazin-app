@@ -5,6 +5,7 @@ import OrderDetailsProduct from './OrderDetailsProduct';
 import { deleteOrder } from '../../store/order';
 import ProductSlider from '../ProductSlider';
 import './OrderDetails.css'
+import Popup from 'reactjs-popup';
 
 export default function OrderDetails() {
   const dispatch = useDispatch()
@@ -18,6 +19,9 @@ export default function OrderDetails() {
   const [products, setProducts] = useState([])
   const [deliveryDate, setDeliveryDate] = useState('')
   const [loaded, setLoaded] = useState(false)
+  const [open, setOpen] = useState(false);
+
+  const closeModal = () => setOpen(false);
 
   useEffect(() => {
     setDeliveryDate(new Date(new Date(order.created_at).setDate(new Date(order.created_at).getDate() + 2)))
@@ -72,9 +76,26 @@ export default function OrderDetails() {
                 )
               })}
             </div>
-            <div className='buttons-container' id={order.id} onClick={handleDelete}>
+            <div className='buttons-container' id={order.id} onClick={() => setOpen(o => !o)}>
               Delete archive
             </div>
+            <Popup
+              open={open}
+              closeOnDocumentClick={false}
+              onClose={closeModal}
+              modal
+            >
+              <div className='delete-confirm-modal'>
+                <div className='confirm-container82903'>
+                  <i className="fas fa-exclamation-triangle"></i>
+                  <h2>Are you sure you want to delete this archive?</h2>
+                </div>
+                <div className='confirm-btns-container9723'>
+                  <button className='cancel-btn27931' onClick={closeModal}>Nope</button>
+                  <button className='delete-btn81794' id={order.id} onClick={handleDelete}>Yes</button>
+                </div>
+              </div>
+            </Popup>
           </div>
         </div>
       </div>
