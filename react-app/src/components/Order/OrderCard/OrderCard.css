@@ -146,17 +146,38 @@
   color: #C7511F;
 }
 
-.order-instructions-container {
+.order-instructions-container9821 {
   margin-right: 20px;
 }
 
-.order-instructions-container a {
+.order-instructions-container9821 a {
   font-size: 14px;
   text-decoration: none;
   color: #007185;
 }
 
-.order-instructions-container a:hover {
+.order-instructions-container9821 a:hover {
+  text-decoration: underline;
+  color: #C7511F;
+}
+
+.instructions-wrapper9283 {
+  display: flex;
+}
+
+.instructions-wrapper9283 .order-instructions-container4530 {
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: solid #D5D9D9 1px;
+}
+
+.instructions-wrapper9283 .order-instructions-container4530 a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #007185;
+}
+
+.instructions-wrapper9283 .order-instructions-container4530 a:hover {
   text-decoration: underline;
   color: #C7511F;
 }
