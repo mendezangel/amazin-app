@@ -84,26 +84,31 @@ const NavBar = () => {
         </div>
         <div className='nav-bar-middle-container'>
           <div className='input-and-searchbtn'>
-            <input type='text' onChange={updateSearchTerms} value={searchTerms} className='search-bar' />
-            {/* <div className='magnifying-glass'></div> */}
-          </div>
-          {searchTerms && (
-            <div className='search-results-container'>
-              {products.filter(product => {
-                if (product.name.toLowerCase().includes(searchTerms.toLowerCase())) {
-                  return product;
-                }
-              }).map(product => {
-                return (
-                  <Link to={`/products/${product.id}`} onClick={() => setSearchTerms('')} key={product.id}>
-                    <div className='search-result' key={product.id}>
-                      <p>{product.name}</p>
-                    </div>
-                  </Link>
-                )
-              })}
+            <div className='search-bar-container'>
+              <input type='text' onChange={updateSearchTerms} value={searchTerms} className='search-bar' />
+              {searchTerms && (
+                <div className='search-results-container'>
+                  {products.filter(product => {
+                    if (product.name.toLowerCase().includes(searchTerms.toLowerCase())) {
+                      return product;
+                    }
+                  }).map(product => {
+                    return (
+                      <Link to={`/products/${product.id}`} onClick={() => setSearchTerms('')} key={product.id}>
+                        <div className='search-result' key={product.id}>
+                          <p>{product.name}</p>
+                        </div>
+                      </Link>
+                    )
+                  })}
+                </div>
+              )}
             </div>
-          )}
+            <div className='magnifying-glass'>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+
         </div>
         <div className='nav-bar-right-container'>
           <div className='nav-bar-user' onClick={() => !user ? history.push('/login') : null}>

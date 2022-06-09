@@ -217,15 +217,20 @@ i {
   box-sizing: border-box;
   width: 50%;
   position: relative;
+  height: 100%;
 }
 
 .input-and-searchbtn {
   overflow: hidden;
+  display: flex;
+  width: 100%;
+  height: 35px;
+  border: solid white 1px;
 }
 
 .input-and-searchbtn input {
-  width: 100%;
-  height: 30px;
+  width: 85%;
+  height: 100%;
   border: none;
 }
 
@@ -233,7 +238,7 @@ i {
   outline: none;
 }
 
-.search-results-container {
+.input-and-searchbtn .search-results-container {
   /* display: none; */
   box-sizing: border-box;
   background-color: #fff;
