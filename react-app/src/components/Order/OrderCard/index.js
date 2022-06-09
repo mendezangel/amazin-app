@@ -72,11 +72,16 @@ export default function OrderCard({ order }) {
             <p>{order.user.name}</p>
           </div>
         </div>
-        <div className='order-instructions-container'>
-          <Link onClick={orderDetailsClick}>View order details</Link>
-        </div>
+        {deliveryDate < new Date() && (
+          <div className='order-instructions-container9821'>
+            <Link onClick={orderDetailsClick} className='order-details'>View order details</Link>
+          </div>
+        )}
         {deliveryDate > new Date() && (
-          <>
+          <div className='instructions-wrapper9283'>
+            <div className='order-instructions-container4530'>
+              <Link onClick={orderDetailsClick} className='order-details'>View order details</Link>
+            </div>
             <div className='update-delivery-instructions' onClick={() => setOpen(o => !o)}>Update Delivery Instructions</div>
             <Popup
               open={open}
@@ -92,7 +97,7 @@ export default function OrderCard({ order }) {
                 </div>
               </div>
             </Popup>
-          </>
+          </div>
         )}
       </div>
       <div className='order-card-child2'>
@@ -110,7 +115,7 @@ export default function OrderCard({ order }) {
                 <div className='image-container12738'><img src={product.product.image_url} /></div>
                 <div className='item-info4672'>
                   <Link to={`/products/${product.product_id}`}>{product.product.name}</Link>
-                  <div className='product-buy-again'>Buy it again</div>
+                  <Link to={`/products/${product.product_id}`}><div className='product-buy-again'>Buy it again</div></Link>
                 </div>
               </div>
 
