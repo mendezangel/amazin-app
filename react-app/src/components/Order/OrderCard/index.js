@@ -115,7 +115,7 @@ export default function OrderCard({ order }) {
                 <div className='image-container12738'><img src={product.product.image_url} /></div>
                 <div className='item-info4672'>
                   <Link to={`/products/${product.product_id}`}>{product.product.name}</Link>
-                  <div className='product-buy-again'>Buy it again</div>
+                  <Link to={`/products/${product.product_id}`}><div className='product-buy-again'>Buy it again</div></Link>
                 </div>
               </div>
 
