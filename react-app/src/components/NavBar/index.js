@@ -6,6 +6,7 @@ import image from '../../images/Amazin.png'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Popup from 'reactjs-popup';
 import UserDropdownMenu from '../UserDropdownMenu'
+import './script';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
@@ -83,7 +84,7 @@ const NavBar = () => {
         </div>
         <div className='nav-bar-middle-container'>
           <div className='input-and-searchbtn'>
-            <input type='text' onChange={updateSearchTerms} value={searchTerms} />
+            <input type='text' onChange={updateSearchTerms} value={searchTerms} className='search-bar' />
             {/* <div className='magnifying-glass'></div> */}
           </div>
           {searchTerms && (
@@ -94,7 +95,7 @@ const NavBar = () => {
                 }
               }).map(product => {
                 return (
-                  <Link to={`/products/${product.id}`} onClick={() => setSearchTerms('')}>
+                  <Link to={`/products/${product.id}`} onClick={() => setSearchTerms('')} key={product.id}>
                     <div className='search-result' key={product.id}>
                       <p>{product.name}</p>
                     </div>
