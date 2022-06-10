@@ -43,16 +43,16 @@ const NavBar = () => {
     )
   }
 
-  const inputOnBlur = () => {
-    const resultsContainer = document.querySelector('.search-results-container');
-    resultsContainer.style.display = 'none';
+  const inputOnFocus = () => {
+    const middleContainer = document.querySelector('.nav-bar-middle-container');
+
+    middleContainer.classList.add('search-focus')
   }
 
-  const inputOnFocus = () => {
-    const resultsContainer = document.querySelector('.search-results-container');
-    const body = document.querySelector('body')
-    resultsContainer.style.display = 'block';
-    body.style.background = 'rgba(0, 0, 0, 0.5)'
+  const inputOnBlur = () => {
+    const middleContainer = document.querySelector('.nav-bar-middle-container');
+
+    middleContainer.classList.remove('search-focus');
   }
 
   // if (!user) return null;
@@ -85,7 +85,7 @@ const NavBar = () => {
         <div className='nav-bar-middle-container'>
           <div className='input-and-searchbtn'>
             <div className='search-bar-container'>
-              <input type='text' onChange={updateSearchTerms} value={searchTerms} className='search-bar' />
+              <input type='text' onChange={updateSearchTerms} value={searchTerms} className='search-bar' onFocus={inputOnFocus} onBlur={inputOnBlur} />
               {searchTerms && (
                 <div className='search-results-container'>
                   {products.filter(product => {
@@ -105,7 +105,7 @@ const NavBar = () => {
               )}
             </div>
             <div className='magnifying-glass'>
-              <i class="fa-solid fa-magnifying-glass"></i>
+              <i className="fa-solid fa-magnifying-glass"></i>
             </div>
           </div>
 
