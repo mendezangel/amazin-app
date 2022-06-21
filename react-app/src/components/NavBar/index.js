@@ -55,9 +55,12 @@ const NavBar = () => {
     middleContainer.classList.remove('search-focus');
   }
 
-  // const onSearch = () => {
-
-  // }
+  const onSearch = () => {
+    return history.push({
+      pathname: '/search-results',
+      state: searchTerms
+    })
+  }
 
   // if (!user) return null;
 
@@ -108,7 +111,7 @@ const NavBar = () => {
                 </div>
               )}
             </div>
-            <div className='magnifying-glass'>
+            <div className='magnifying-glass' onClick={onSearch}>
               <i className="fa-solid fa-magnifying-glass"></i>
             </div>
           </div>
