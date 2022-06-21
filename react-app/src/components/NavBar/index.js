@@ -55,6 +55,10 @@ const NavBar = () => {
     middleContainer.classList.remove('search-focus');
   }
 
+  // const onSearch = () => {
+
+  // }
+
   // if (!user) return null;
 
   return (

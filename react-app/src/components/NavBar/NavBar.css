@@ -269,6 +269,7 @@ i {
   top: 34px;
   margin: 0 0 0 1px;
   z-index: 2;
+  border-radius: 3px;
 }
 
 .input-and-searchbtn .magnifying-glass {
