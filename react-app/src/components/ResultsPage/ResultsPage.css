@@ -70,3 +70,25 @@
   font-size: 20px;
   margin: 13px 0;
 }
+
+.no-results-container {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.no-results-container i {
+  color: #0F1111;
+}
+
+.no-results-container a {
+  color: #007185;
+  text-decoration: none;
+}
+
+.no-results-container a:hover {
+  color: #C7511F;
+  text-decoration: underline;
+}

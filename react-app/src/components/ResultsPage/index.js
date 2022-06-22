@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom'
+import { useHistory, useLocation, Link } from 'react-router-dom'
 import { loadAllReviews } from '../../store/review';
 import ReactStars from 'react-stars';
 import './ResultsPage.css';
 
 export default function ResultsPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { state: searchTerms } = useLocation();
   const products = useSelector(state => state.product.products)
   const reviews = useSelector(state => state.review.reviews)
@@ -46,6 +47,10 @@ export default function ResultsPage() {
     return filteredReviews.length;
   }
 
+  const linkToProduct = (id) => {
+    return history.push(`/products/${id}`)
+  }
+
   if (!loaded) return null;
 
   return (
@@ -57,7 +62,7 @@ export default function ResultsPage() {
               <img src={product.image_url} />
             </div>
             <div className='product-info1982'>
-              <h2 className='name'>{product.name}</h2>
+              <h2 className='name' onClick={() => linkToProduct(product.id)}>{product.name}</h2>
               <div className='stars-and-ratings'>
                 <ReactStars
                   count={5}
@@ -66,14 +71,17 @@ export default function ResultsPage() {
                   size={20}
                   color2={'#FFA41C'}
                 />
-                <p className='num-reviews'>{totalReviews(product.id)}</p>
+                <p className='num-reviews' onClick={() => linkToProduct(product.id)}>{totalReviews(product.id)}</p>
               </div>
               <p className='price'>${product.price}.99</p>
               <p className='shipping' style={{ 'fontSize': '14px' }}>FREE shipping by Amazin</p>
             </div>
           </div>
         )
-      }) : <h1>No Products</h1>}
+      }) : <div className='no-results-container'>
+        <i><h1>No Results</h1></i>
+        <Link to={'/'}>Home</Link>
+      </div>}
     </div>
   )
 }
