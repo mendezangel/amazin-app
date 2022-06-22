@@ -56,10 +56,11 @@ const NavBar = () => {
   }
 
   const onSearch = () => {
-    return history.push({
+    history.push({
       pathname: '/search-results',
       state: searchTerms
     })
+    return window.location.reload();
   }
 
   // if (!user) return null;
