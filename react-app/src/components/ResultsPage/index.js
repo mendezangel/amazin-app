@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom'
+import { loadAllReviews } from '../../store/review';
 
 export default function ResultsPage() {
-
+  const dispatch = useDispatch();
   const { state: searchTerms } = useLocation();
   const products = useSelector(state => state.product.products)
+  const reviews = useSelector(state => state.review.reviews)
 
   const [filteredProducts, setFilteredProducts] = useState([])
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
+    dispatch(loadAllReviews());
     setFilteredProducts(products.filter(product => {
       if (product.name.toLowerCase().includes(searchTerms.toLowerCase())) {
         return product;
@@ -20,9 +23,20 @@ export default function ResultsPage() {
     setLoaded(true);
   }, [products])
 
-  if (!loaded) return null;
+  const averageRating = (id) => {
+    const filteredReviews = [];
+    let average = 0;
+    reviews.forEach(review => {
+      if (review.product_id === id) filteredReviews.push(review);
+    })
 
-  console.log('filtered products ======>', filteredProducts)
+    filteredReviews.forEach(review => {
+      average += review.rating;
+    })
+    return Math.round(average / filteredReviews.length)
+  }
+
+  if (!loaded) return null;
 
   return (
     <div>
@@ -34,7 +48,8 @@ export default function ResultsPage() {
             </div>
             <div className='product-info1982'>
               <p>{product.name}</p>
-
+              <p>{product.price}</p>
+              <p>FREE shipping by Amazin</p>
             </div>
           </div>
         )

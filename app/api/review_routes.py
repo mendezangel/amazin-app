@@ -5,6 +5,11 @@ from flask_login import login_required
 
 review_routes = Blueprint('reviews', __name__)
 
+@review_routes.route('/')
+def load_reviews():
+  reviews = Review.query.all();
+  return {'reviews': [review.to_dict() for review in reviews]}
+
 @review_routes.route('/new', methods=['POST'])
 @login_required
 def new_review():

@@ -24,6 +24,14 @@ const clearReviewsAction = payload => {
 //   return {type: UPDATE, payload}
 // }
 
+export const loadAllReviews = () => async (dispatch) => {
+  const res = await fetch('/api/reviews/');
+  if (res.ok) {
+    const { reviews } = await res.json()
+    dispatch(loadReviewsAction(reviews));
+  }
+}
+
 export const clearReviews = () => async (dispatch) => {
   dispatch(clearReviewsAction())
 }
