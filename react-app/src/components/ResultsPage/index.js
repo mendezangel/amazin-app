@@ -69,7 +69,7 @@ export default function ResultsPage() {
                 <p className='num-reviews'>{totalReviews(product.id)}</p>
               </div>
               <p className='price'>${product.price}.99</p>
-              <p className='shipping' style={{ 'font-size': '14px' }}>FREE shipping by Amazin</p>
+              <p className='shipping' style={{ 'fontSize': '14px' }}>FREE shipping by Amazin</p>
             </div>
           </div>
         )

@@ -55,6 +55,17 @@ const NavBar = () => {
     middleContainer.classList.remove('search-focus');
   }
 
+  const searchBar = document.querySelector('.search-bar')
+  document.addEventListener('keyup', event => {
+    if (event.target === searchBar && event.key === 'Enter') {
+      history.push({
+        pathname: '/search-results',
+        state: searchTerms
+      })
+      return window.location.reload();
+    }
+  })
+
   const onSearch = () => {
     history.push({
       pathname: '/search-results',
