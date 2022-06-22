@@ -7,10 +7,12 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Popup from 'reactjs-popup';
 import UserDropdownMenu from '../UserDropdownMenu'
 import './script';
+import { search } from '../../store/product';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
   const history = useHistory()
+  const dispatch = useDispatch();
 
   const products = useSelector(state => state.product.products)
 
@@ -55,23 +57,37 @@ const NavBar = () => {
     middleContainer.classList.remove('search-focus');
   }
 
-  const searchBar = document.querySelector('.search-bar')
-  document.addEventListener('keyup', event => {
+  document.addEventListener('keyup', async (event) => {
+    const searchBar = document.querySelector('.search-bar')
+    // const dropdown = document.querySelector('.search-results-container');
     if (event.target === searchBar && event.key === 'Enter') {
-      history.push({
-        pathname: '/search-results',
-        state: searchTerms
-      })
-      return window.location.reload();
+      // history.push({
+      //   pathname: '/search-results',
+      //   state: searchTerms
+      // })
+      // return window.location.reload();
+
+      // await dispatch(search(searchTerms))
+      // if (dropdown) dropdown.style.display = 'none'
+      // return history.push('/search-results');
+      // inputOnBlur();
+      console.log('enter pressed')
+      return onSearch();
     }
   })
 
-  const onSearch = () => {
-    history.push({
-      pathname: '/search-results',
-      state: searchTerms
-    })
-    return window.location.reload();
+  const onSearch = async () => {
+    // history.push({
+    //   pathname: '/search-results',
+    //   state: searchTerms
+    // })
+    // return window.location.reload();
+    const searchBar = document.querySelector('.search-bar')
+    searchBar.blur();
+    const dropdown = document.querySelector('.search-results-container');
+    await dispatch(search(searchTerms))
+    if (dropdown) dropdown.style.display = 'none'
+    return history.push('/search-results');
   }
 
   // if (!user) return null;

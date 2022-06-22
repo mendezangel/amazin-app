@@ -1,8 +1,26 @@
 const LOAD = 'products/load';
+const SEARCH = 'products/search';
+const CLEARSEARCH = 'products/clearsearch';
 
 const products = payload => {
   return { type: LOAD, payload }
 };
+
+const searchAction = searchTerms => {
+  return { type: SEARCH, searchTerms }
+}
+
+const clearSearchAction = () => {
+  return { type: CLEARSEARCH }
+};
+
+export const clearSearch = () => async (dispatch) => {
+  dispatch(clearSearchAction())
+}
+
+export const search = (searchTerms) => async (dispatch) => {
+  dispatch(searchAction(searchTerms))
+}
 
 export const getAllProducts = () => async (dispatch) => {
   const res = await fetch('/api/products/');
@@ -26,8 +44,18 @@ const ProductReducer = (state = initialState, action) => {
   let newState;
 
   switch (action.type) {
+    case SEARCH:
+      newState = { ...state, products: [...state.products] }
+      newState.searchTerms = action.searchTerms
+      return newState;
+
+    case CLEARSEARCH:
+      newState = { ...state, products: [...state.products] }
+      delete newState.searchTerms;
+      return newState;
+
     case LOAD:
-      newState = { ...state };
+      newState = { ...state, products: [...state.products] };
       newState.products = [...state.products]
       // newState.reviews = { ...newState.reviews }
       newState.products = [...action.payload]
