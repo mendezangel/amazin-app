@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom'
 import { loadAllReviews } from '../../store/review';
 import ReactStars from 'react-stars';
+import './ResultsPage.css';
 
 export default function ResultsPage() {
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ export default function ResultsPage() {
   if (!loaded) return null;
 
   return (
-    <div>
+    <div className='results-wrapper'>
       {filteredProducts.length !== 0 ? filteredProducts.map(product => {
         return (
           <div className='filtered-product-container' key={product.id}>
@@ -56,19 +57,19 @@ export default function ResultsPage() {
               <img src={product.image_url} />
             </div>
             <div className='product-info1982'>
-              <p>{product.name}</p>
+              <h2 className='name'>{product.name}</h2>
               <div className='stars-and-ratings'>
                 <ReactStars
                   count={5}
                   value={averageRating(product.id)}
                   edit={false}
-                  size={15}
+                  size={20}
                   color2={'#FFA41C'}
                 />
-                <p>{totalReviews(product.id)}</p>
+                <p className='num-reviews'>{totalReviews(product.id)}</p>
               </div>
-              <p>{product.price}</p>
-              <p>FREE shipping by Amazin</p>
+              <p className='price'>${product.price}.99</p>
+              <p className='shipping' style={{ 'font-size': '14px' }}>FREE shipping by Amazin</p>
             </div>
           </div>
         )
