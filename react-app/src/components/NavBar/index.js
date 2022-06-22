@@ -57,24 +57,23 @@ const NavBar = () => {
     middleContainer.classList.remove('search-focus');
   }
 
-  document.addEventListener('keyup', async (event) => {
-    const searchBar = document.querySelector('.search-bar')
-    // const dropdown = document.querySelector('.search-results-container');
-    if (event.target === searchBar && event.key === 'Enter') {
-      // history.push({
-      //   pathname: '/search-results',
-      //   state: searchTerms
-      // })
-      // return window.location.reload();
+  // document.addEventListener('keyup', async (event) => {
+  //   const searchBar = document.querySelector('.search-bar')
+  //   // const dropdown = document.querySelector('.search-results-container');
+  //   if (event.target === searchBar && event.key === 'Enter') {
+  //     // history.push({
+  //     //   pathname: '/search-results',
+  //     //   state: searchTerms
+  //     // })
+  //     // return window.location.reload();
 
-      // await dispatch(search(searchTerms))
-      // if (dropdown) dropdown.style.display = 'none'
-      // return history.push('/search-results');
-      // inputOnBlur();
-      console.log('enter pressed')
-      return onSearch();
-    }
-  })
+  //     // await dispatch(search(searchTerms))
+  //     // if (dropdown) dropdown.style.display = 'none'
+  //     // return history.push('/search-results');
+  //     // inputOnBlur();
+  //     return onSearch();
+  //   }
+  // })
 
   const onSearch = async () => {
     // history.push({
@@ -120,7 +119,7 @@ const NavBar = () => {
         <div className='nav-bar-middle-container'>
           <div className='input-and-searchbtn'>
             <div className='search-bar-container'>
-              <input type='text' onChange={updateSearchTerms} value={searchTerms} className='search-bar' onFocus={inputOnFocus} onBlur={inputOnBlur} />
+              <input type='text' onChange={updateSearchTerms} value={searchTerms} className='search-bar' onFocus={inputOnFocus} onBlur={inputOnBlur} onKeyDown={(e) => { if (e.key === "Enter") onSearch() }} />
               {searchTerms && (
                 <div className='search-results-container'>
                   {products.filter(product => {
