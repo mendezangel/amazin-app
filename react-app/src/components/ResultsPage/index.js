@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom'
 import { loadAllReviews } from '../../store/review';
+import ReactStars from 'react-stars';
 
 export default function ResultsPage() {
   const dispatch = useDispatch();
@@ -36,6 +37,14 @@ export default function ResultsPage() {
     return Math.round(average / filteredReviews.length)
   }
 
+  const totalReviews = (id) => {
+    const filteredReviews = [];
+    reviews.forEach(review => {
+      if (review.product_id === id) filteredReviews.push(review);
+    })
+    return filteredReviews.length;
+  }
+
   if (!loaded) return null;
 
   return (
@@ -48,6 +57,16 @@ export default function ResultsPage() {
             </div>
             <div className='product-info1982'>
               <p>{product.name}</p>
+              <div className='stars-and-ratings'>
+                <ReactStars
+                  count={5}
+                  value={averageRating(product.id)}
+                  edit={false}
+                  size={15}
+                  color2={'#FFA41C'}
+                />
+                <p>{totalReviews(product.id)}</p>
+              </div>
               <p>{product.price}</p>
               <p>FREE shipping by Amazin</p>
             </div>
