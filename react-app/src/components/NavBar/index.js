@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import './NavBar.css'
@@ -16,9 +16,17 @@ const NavBar = () => {
 
   const products = useSelector(state => state.product.products)
 
-  const [searchTerms, setSearchTerms] = useState('')
+  const storageTerms = localStorage.getItem('searchTerms')
+
+  const [searchTerms, setSearchTerms] = useState(
+    storageTerms && storageTerms !== '' ? storageTerms : ''
+  )
 
   const updateSearchTerms = (e) => setSearchTerms(e.target.value);
+
+  useEffect(() => {
+    localStorage.setItem('searchTerms', searchTerms)
+  }, [searchTerms])
 
   const cartButton = () => history.push('/cart')
 
@@ -57,30 +65,7 @@ const NavBar = () => {
     middleContainer.classList.remove('search-focus');
   }
 
-  // document.addEventListener('keyup', async (event) => {
-  //   const searchBar = document.querySelector('.search-bar')
-  //   // const dropdown = document.querySelector('.search-results-container');
-  //   if (event.target === searchBar && event.key === 'Enter') {
-  //     // history.push({
-  //     //   pathname: '/search-results',
-  //     //   state: searchTerms
-  //     // })
-  //     // return window.location.reload();
-
-  //     // await dispatch(search(searchTerms))
-  //     // if (dropdown) dropdown.style.display = 'none'
-  //     // return history.push('/search-results');
-  //     // inputOnBlur();
-  //     return onSearch();
-  //   }
-  // })
-
   const onSearch = async () => {
-    // history.push({
-    //   pathname: '/search-results',
-    //   state: searchTerms
-    // })
-    // return window.location.reload();
     const searchBar = document.querySelector('.search-bar')
     searchBar.blur();
     const dropdown = document.querySelector('.search-results-container');

@@ -8,8 +8,7 @@ import './ResultsPage.css';
 export default function ResultsPage() {
   const dispatch = useDispatch();
   const history = useHistory();
-  // const { state: searchTerms } = useLocation();
-  const searchTerms = useSelector(state => state.product.searchTerms);
+  const searchTerms = localStorage.getItem('searchTerms')
   const products = useSelector(state => state.product.products)
   const reviews = useSelector(state => state.review.reviews)
 
@@ -21,11 +20,13 @@ export default function ResultsPage() {
   }, [])
 
   useEffect(() => {
-    setFilteredProducts(products.filter(product => {
-      if (product?.name.toLowerCase().includes(searchTerms.toLowerCase())) {
-        return product;
-      }
-    }))
+    if (products) {
+      setFilteredProducts(products.filter(product => {
+        if (product.name.toLowerCase().includes(searchTerms?.toLowerCase())) {
+          return product;
+        }
+      }))
+    }
 
     setLoaded(true);
   }, [products])
