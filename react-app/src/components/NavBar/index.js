@@ -81,7 +81,7 @@ const NavBar = () => {
       <div className='nav-bar-container'>
         <div className='nav-bar-left-container'>
           <div className='nav-bar-logo-container'>
-            <Link to='/'>
+            <Link to='/' onClick={() => { setSearchTerms('') }}>
               <img src={image} />
             </Link>
           </div>
