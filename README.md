@@ -41,6 +41,9 @@ Users are able to view and post reviews on any product.
 # Orders
 Users can view their order history, as well as view delivery status on their orders.
 ![orders](https://user-images.githubusercontent.com/94506606/169831791-daeee908-0d91-45ee-a8ec-68c3951b1cd2.png)
+Users can view a specific order's details.
+![order-details-page](https://user-images.githubusercontent.com/94506606/172728007-9b4e93f4-aa64-4281-8b24-b6ef75710aa3.png)
+
 
 # Cart
 ![cart](https://user-images.githubusercontent.com/94506606/169831826-2ee30676-b90c-46b3-ae07-91df75ef1e4b.png)
