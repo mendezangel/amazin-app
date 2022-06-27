@@ -16,7 +16,7 @@ const NavBar = () => {
 
   const products = useSelector(state => state.product.products)
 
-  const storageTerms = localStorage.getItem('searchTerms')
+  const storageTerms = sessionStorage.getItem('searchTerms')
 
   const [searchTerms, setSearchTerms] = useState(
     storageTerms && storageTerms !== '' ? storageTerms : ''
@@ -25,7 +25,7 @@ const NavBar = () => {
   const updateSearchTerms = (e) => setSearchTerms(e.target.value);
 
   useEffect(() => {
-    localStorage.setItem('searchTerms', searchTerms)
+    sessionStorage.setItem('searchTerms', searchTerms)
   }, [searchTerms])
 
   const cartButton = () => history.push('/cart')

@@ -8,7 +8,7 @@ import './ResultsPage.css';
 export default function ResultsPage() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const searchTerms = localStorage.getItem('searchTerms')
+  const searchTerms = sessionStorage.getItem('searchTerms')
   const products = useSelector(state => state.product.products)
   const reviews = useSelector(state => state.review.reviews)
 
